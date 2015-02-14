@@ -6,4 +6,4 @@ Feature: Log in - empty form
     When He fill email "olx_test@op.pl" and password "mnb098"
     And Clicks on the Zaloguj sie button
     Then He check you are logged
-    And He click logged out
+    And He click log out
