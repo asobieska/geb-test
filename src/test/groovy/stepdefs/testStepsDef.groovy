@@ -25,7 +25,8 @@ And(~/^Clicks on the Zaloguj sie button$/) {  ->
 }
 
 Then(~/^He check you are logged$/) { ->
-    loginPage.titleAfterLogIn()
+    waitFor {browser.title == "Mój OLX • OLX.pl (dawniej Tablica.pl)"}
+    assert loginPage.isTitleContains("Mój OLX")
 }
 
 And(~/^He click log out$/) { ->
