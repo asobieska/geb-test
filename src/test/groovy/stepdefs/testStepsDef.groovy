@@ -13,7 +13,8 @@ Given(~/^User is on olx.pl page$/) { ->
 }
 
 And(~/^He is clicks on the Moj OLX$/) {  ->
-    loginPage = myPage.goToLoginPage()
+    myPage.goToLoginPage()
+    loginPage = page
 }
 
 When(~/^He fill email "(.*?)" and password "(.*?)"$/) { String email, String password ->
@@ -29,11 +30,15 @@ Then(~/^He check you are logged$/) { ->
     assert loginPage.isTitleContains("Mój OLX")
 }
 
-And(~/^He click log out$/) { ->
-    loginPage.logOut()
+//Scenario2
+Then(~/^He is informed that he has to provide email and password$/) { ->
+    assert loginPage.isErrorMessageForEmailVisible()
+    assert loginPage.isErrorMessageForPasswordVisible()
 }
 
-
+Then(~/^He is not logged in$/) { ->
+    assert myPage.at
+}
 
 
 

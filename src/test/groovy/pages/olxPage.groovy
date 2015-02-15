@@ -6,10 +6,9 @@ class olxPage extends Page {
     static url = '/'
     static at = { waitFor { title.contains('OLX') } }
     static content = {
-        loginLink {$('#topLoginLink')}
-        }
+        loginLink(to: LoginPage) {  $('#topLoginLink') }
+    }
     def goToLoginPage(){
         loginLink.click()
-        browser.createPage(LoginPage)
     }
 }

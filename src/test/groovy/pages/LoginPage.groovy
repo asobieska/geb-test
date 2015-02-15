@@ -1,5 +1,4 @@
 package pages
-import geb.Page
 /**
  * Created by asobieska on 2/12/2015.
  */
@@ -9,8 +8,6 @@ class LoginPage extends OlxAbstractPage{
         passwordField {$("#loginForm input[name='login[password]']")}
         loginButton {$("#se_userLogin")}
         logOutButton {$("#topLoginLink")}
-        displayed {$("#userLoginBox")}
-        loginOutList {$("#login-box-logout")}
     }
 
     def logIn(String email, String password){
@@ -22,10 +19,12 @@ class LoginPage extends OlxAbstractPage{
         loginButton.click()
     }
 
-    def logOut(){
-        logOutButton.click()
-        waitFor{ displayed.isDisplayed()}
-        loginOutList.click()
+    def isErrorMessageForEmailVisible(){
+        waitFor {$("label.error[for='userEmail']").text() == "To pole jest wymagane"}
+    }
+
+    def isErrorMessageForPasswordVisible(){
+       waitFor {$("label.error[for='userPass']")}
     }
 
 }

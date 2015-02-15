@@ -7,8 +7,10 @@ import static cucumber.api.groovy.Hooks.After
 import static cucumber.api.groovy.Hooks.Before
 
 Before() {
-    bindingUpdater = new BindingUpdater(binding, new Browser())
+    b = new Browser()
+    bindingUpdater = new BindingUpdater(binding, b)
     bindingUpdater.initialize()
+    b.clearCookies()
 }
 
 After() {
