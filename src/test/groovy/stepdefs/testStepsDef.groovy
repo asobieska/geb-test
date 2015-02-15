@@ -39,7 +39,26 @@ Then(~/^He is informed that he has to provide email and password$/) { ->
 Then(~/^He is not logged in$/) { ->
     assert myPage.at
 }
+//Scenario3
+When(~/^He fill email "(.*?)" wrong and password "(.*?)" good$/) { String email, String password ->
+    loginPage.logIn(email, password)
+}
 
+And(~/^He fill email "(.*?)" good and password "(.*?)" wrong$/) { String email, String password ->
+    loginPage.logIn(email, password)
+}
+
+Then(~/^He is receive a message "(.*?)" for field "(.*?)"$/) { String message, String field ->
+    if (field == "email")
+        loginPage.isErrorMessageForEmail(message)
+    if (field == "password")
+        loginPage.isErrorMessageForPassword(message)
+}
+
+//Scenario4
+When(~/^Click on radio button to remember the user$/) { ->
+    loginPage.checkRememberMe()
+}
 
 
 

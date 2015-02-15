@@ -1,6 +1,5 @@
 package pages
 
-import geb.navigator.Navigator
 
 /**
  * Created by asobieska on 2/12/2015.
@@ -28,9 +27,19 @@ class LoginPage extends OlxAbstractPage{
         waitFor { errorMessageForEmail.text() == "To pole jest wymagane" }
     }
 
+    def isErrorMessageForEmail(message){
+        waitFor { errorMessageForEmail.text() == message }
+    }
+
     def isErrorMessageForPasswordVisible(){
        waitFor { errorMessageForPassword }
     }
 
+    def isErrorMessageForPassword(message){
+        waitFor { errorMessageForPassword.text() == message }
+    }
+    def checkRememberMe(){
+        waitFor { $("label.f_checkbox[for='user-remember']").click() }
+    }
 }
 
