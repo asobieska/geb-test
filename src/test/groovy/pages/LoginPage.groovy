@@ -1,8 +1,4 @@
 package pages
-
-import geb.navigator.Navigator
-
-
 /**
  * Created by asobieska on 2/12/2015.
  */
@@ -15,6 +11,8 @@ class LoginPage extends OlxAbstractPage{
         errorMessageForEmail  { $("label.error[for='userEmail']") }
         errorMessageForPassword { $("label.error[for='userPass']") }
         checkZapamietajMnie { $("label.f_checkbox[for='user-remember']") }
+        zapomnialesHasla { $("#newpassword") }
+        forgottenPasswordLink (to: NewPasswordPage) {  $('#newpassword') }
     }
 
     def logIn(String email, String password){
@@ -44,5 +42,15 @@ class LoginPage extends OlxAbstractPage{
     def checkRememberMe(){
         waitFor { checkZapamietajMnie.click() }
     }
+
+    def forgottenPasswordLink(){
+        zapomnialesHasla.click()
+    }
+
+    def goToNewPasswordPage(){
+        forgottenPasswordLink.click()
+    }
+
+
 }
 
