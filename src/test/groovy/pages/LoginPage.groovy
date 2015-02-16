@@ -13,6 +13,9 @@ class LoginPage extends OlxAbstractPage{
         checkZapamietajMnie { $("label.f_checkbox[for='user-remember']") }
         zapomnialesHasla { $("#newpassword") }
         forgottenPasswordLink (to: NewPasswordPage) { $("#newpassword") }
+        facebookButton { $(".button span.icon")}
+        facebookPageButton { $("#loginbutton")}
+        errorMessageForFacebookLogIn { $("#login_form.login_error_box")}
     }
 
 
@@ -44,14 +47,21 @@ class LoginPage extends OlxAbstractPage{
         waitFor { checkZapamietajMnie.click() }
     }
 
-//    def forgottenPasswordLink(){
-//       waitFor { zapomnialesHasla.click() }
-//    }
-
     def goToNewPasswordPage(){
         waitFor { forgottenPasswordLink.click() }
         browser.page
     }
 
+    def logInFacebookButton(){
+        facebookButton.click()
+    }
+
+    def logInFacebookPageButton(){
+        facebookPageButton.click()
+    }
+
+    def isErrorMessageForFacebookEmail(){
+        waitFor { errorMessageForFacebookLogIn.text() == "Incorrect Email" }
+    }
 }
 

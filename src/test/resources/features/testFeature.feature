@@ -47,7 +47,7 @@ Feature: Log in and do not remember the User
     Then He check you are logged
 
 #Scenario5 - TBA33
-  Scenario:Forgotten password
+  Scenario: Change password - forgotten password
     Given User is on olx.pl page
     And He is clicks on the Moj OLX
     When He click on the Zapomniales hasła
@@ -56,7 +56,7 @@ Feature: Log in and do not remember the User
     Then Password is change
 
 #Scenario6
-  Scenario:Repeat password is incorrect
+  Scenario: Change password - repeat password is incorrect
     Given User is on olx.pl page
     And He is clicks on the Moj OLX
     When He click on the Zapomniales hasła
@@ -65,4 +65,11 @@ Feature: Log in and do not remember the User
     Then He is receive a message for field Powtorz haslo
 
 #Scenario7 - TBA53
-  Scenario: Log in with facebook
+  Scenario: Log in - with facebook
+    Given User is on olx.pl page
+    And He is clicks on the Moj OLX
+    And He click on the facebook link
+    When He check is on facebook page
+    And He fill email "olx_test@op.pl" and password "mnb098"
+    And He click on the Log In
+    Then He is receive a message Incorrect Email

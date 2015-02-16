@@ -9,7 +9,7 @@ class NewPasswordPage extends OlxAbstractPage{
         newPasswordField { $("#mainForm input[name='register[password]']")}
         repeatPasswordField { $("#mainForm input[name='register[password2]']")}
         changeButton { $("#se_userSignIn")}
-        isErrorMessageForRepeatPassword { $("label.error[for='userPass-repeat']")}
+        errorMessageForRepeatPassword { $("label.error[for='userPass-repeat']")}
 
     }
 
@@ -28,6 +28,6 @@ class NewPasswordPage extends OlxAbstractPage{
     }
 
     def isErrorMessageForRepeatPasswordIncorrect(){
-        isErrorMessageForRepeatPassword().text() == "Podane hasła nie są identyczne"
+        errorMessageForRepeatPassword().text() == "Podane hasła nie są identyczne"
     }
 }

@@ -14,7 +14,7 @@ Given(~/^User is on olx.pl page$/) { ->
 
 And(~/^He is clicks on the Moj OLX$/) {  ->
     myPage.goToLoginPage()
-    loginPage = page
+    loginPage = myPage.goToLoginPage()
 }
 
 When(~/^He fill email "(.*?)" and password "(.*?)"$/) { String email, String password ->
@@ -64,7 +64,7 @@ When(~/^Click on radio button to remember the user$/) { ->
 When(~/^He click on the Zapomniales hasła$/) { ->
     loginPage.forgottenPasswordLink()
     newPasswordPage = loginPage.goToNewPasswordPage()
-    assert {newPasswordPage.isTitleContains("Nowe hasło")}
+    assert newPasswordPage.isTitleContains("Nowe hasło")
 }
 
 And(~/^He fill email "(.*?)" and nowe haslo "(.*?)" and powtorz haslo "(.*?)"$/) { String email, String newPassword, String repeatPassword ->
@@ -84,6 +84,22 @@ Then(~/^He is receive a message for field Powtorz haslo$/) { ->
     assert newPasswordPage.isErrorMessageForRepeatPasswordIncorrect()
 }
 
+//Scenario7
+And(~/^He click on the facebook link$/) { ->
+    loginPage.logInFacebookButton()
+}
+
+When(~/^He check is on facebook page$/) { ->
+    assert loginPage.isTitleContains("Log into Facebook")
+}
+
+And(~/^He click on the Log In$/) { ->
+    loginPage.logInFacebookPageButton()
+}
+
+Then(~/^He is receive a message Incorrect Email$/) { ->
+    assert loginPage.isErrorMessageForFacebookEmail()
+}
 
 
 
