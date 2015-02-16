@@ -4,6 +4,7 @@ Feature: Log in and do not remember the User
   Log in - wrong email or password provided
   Log in and remember the User
   Forgotten password
+  Repeat password is incorrect
 
 #Scenario1
   Scenario: Log in and do not remember the User
@@ -54,4 +55,14 @@ Feature: Log in and do not remember the User
     And He click on the Zmien button
     Then Password is change
 
+#Scenario6
+  Scenario:Repeat password is incorrect
+    Given User is on olx.pl page
+    And He is clicks on the Moj OLX
+    When He click on the Zapomniales hasła
+    And He fill email "olx_test@op.pl" and nowe haslo "aaaa" and powtorz haslo "pppp"
+    And He click on the Zmien button
+    Then He is receive a message for field Powtorz haslo
 
+#Scenario7 - TBA53
+  Scenario: Log in with facebook

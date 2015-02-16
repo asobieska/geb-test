@@ -81,7 +81,7 @@ Then(~/^Password is change$/) { ->
 
 //Scenario6
 Then(~/^He is receive a message for field Powtorz haslo$/) { ->
-
+    assert newPasswordPage.isErrorMessageForRepeatPasswordIncorrect()
 }
 
 
