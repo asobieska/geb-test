@@ -3,6 +3,7 @@ Feature: Log in and do not remember the User
   Log in - empty form
   Log in - wrong email or password provided
   Log in and remember the User
+  Forgotten password
 
 #Scenario1
   Scenario: Log in and do not remember the User
@@ -43,6 +44,7 @@ Feature: Log in and do not remember the User
     And Click on radio button to remember the user
     And Clicks on the Zaloguj sie button
     Then He check you are logged
+
 #Scenario5
   Scenario:Forgotten password
     Given User is on olx.pl page

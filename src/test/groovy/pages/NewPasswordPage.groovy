@@ -13,9 +13,9 @@ class NewPasswordPage extends OlxAbstractPage{
     }
 
     def changePassword(email, newPassword, repeatPassword) {
-        emailFieldNewPasswordPage(email)
-        newPasswordField(newPassword)
-        repeatPasswordField(repeatPassword)
+        emailFieldNewPasswordPage.value(email)
+        newPasswordField.value(newPassword)
+        repeatPasswordField.value(repeatPassword)
     }
 
     def changePasswordButton(){

@@ -12,7 +12,11 @@ class LoginPage extends OlxAbstractPage{
         errorMessageForPassword { $("label.error[for='userPass']") }
         checkZapamietajMnie { $("label.f_checkbox[for='user-remember']") }
         zapomnialesHasla { $("#newpassword") }
-        forgottenPasswordLink (to: NewPasswordPage) {  $('#newpassword') }
+        forgottenPasswordLink (to: NewPasswordPage) { (zapomnialesHasla) }
+        emailFieldNewPasswordPage { $("#mainForm input[name='register[email]']")}
+        newPasswordField { $("#mainForm input[name='register[password]']")}
+        repeatPasswordField { $("#mainForm input[name='register[password2]']")}
+        changeButton { $("#se_userSignIn")}
     }
 
     def logIn(String email, String password){
@@ -44,13 +48,26 @@ class LoginPage extends OlxAbstractPage{
     }
 
     def forgottenPasswordLink(){
-        zapomnialesHasla.click()
+       waitFor { zapomnialesHasla.click() }
     }
 
     def goToNewPasswordPage(){
-        forgottenPasswordLink.click()
+        waitFor { forgottenPasswordLink.click() }
     }
 
+    def changePassword(email, newPassword, repeatPassword) {
+        emailFieldNewPasswordPage.value(email)
+        newPasswordField.value(newPassword)
+        repeatPasswordField.value(repeatPassword)
+    }
+
+    def changePasswordButton(){
+        waitFor { changeButton().click() }
+    }
+
+    def isActivateMessageForNewPassword(){
+        waitFor { $("#body-container strong").text() == "Teraz musisz aktywować swoje nowe hasło!"}
+    }
 
 }
 

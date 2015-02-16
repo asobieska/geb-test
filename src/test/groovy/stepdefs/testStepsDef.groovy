@@ -1,6 +1,5 @@
 package stepdefs
 
-import pages.NewPasswordPage
 import pages.olxPage
 import static cucumber.api.groovy.EN.*
 
@@ -66,19 +65,19 @@ When(~/^He click on the Zapomniales hasła$/) { ->
     loginPage.forgottenPasswordLink()
 //    myPage.goToNewPasswordPage()
     newPasswordPage = page
-    assert newPasswordPage.isTitleContains("Nowe hasło")
+    assert {newPasswordPage.isTitleContains("Nowe hasło")}
 }
 
 And(~/^He fill email "(.*?)" and nowe haslo "(.*?)" and powtorz haslo "(.*?)"$/) { String email, String newPassword, String repeatPassword ->
-    newPasswordPage.changePassword(email, newPassword, repeatPassword)
+    loginPage.changePassword(email, newPassword, repeatPassword)
 }
 
 And(~/^He click on the Zmien button$/) { ->
-    newPasswordPage.changePasswordButton()
+    loginPage.changePasswordButton()
 }
 
 Then(~/^password is change$/) { ->
-    assert newPasswordPage.isActivateMessageForNewPassword()
+    assert loginPage.isActivateMessageForNewPassword()
 }
 
 
