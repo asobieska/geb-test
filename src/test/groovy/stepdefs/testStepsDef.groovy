@@ -63,21 +63,25 @@ When(~/^Click on radio button to remember the user$/) { ->
 //Scenario5
 When(~/^He click on the Zapomniales hasła$/) { ->
     loginPage.forgottenPasswordLink()
-//    myPage.goToNewPasswordPage()
-    newPasswordPage = page
+    newPasswordPage = loginPage.goToNewPasswordPage()
     assert {newPasswordPage.isTitleContains("Nowe hasło")}
 }
 
 And(~/^He fill email "(.*?)" and nowe haslo "(.*?)" and powtorz haslo "(.*?)"$/) { String email, String newPassword, String repeatPassword ->
-    loginPage.changePassword(email, newPassword, repeatPassword)
+    newPasswordPage.changePassword(email, newPassword, repeatPassword)
 }
 
 And(~/^He click on the Zmien button$/) { ->
-    loginPage.changePasswordButton()
+    newPasswordPage.changePasswordButton()
 }
 
-Then(~/^password is change$/) { ->
-    assert loginPage.isActivateMessageForNewPassword()
+Then(~/^Password is change$/) { ->
+    assert newPasswordPage.isActivateMessageForNewPassword()
+}
+
+//Scenario6
+Then(~/^He is receive a message for field Powtorz haslo$/) { ->
+
 }
 
 

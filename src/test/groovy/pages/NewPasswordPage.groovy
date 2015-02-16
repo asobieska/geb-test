@@ -19,7 +19,7 @@ class NewPasswordPage extends OlxAbstractPage{
     }
 
     def changePasswordButton(){
-        waitFor { changeButton()}
+        waitFor { changeButton().click() }
     }
 
     def isActivateMessageForNewPassword(){

@@ -10,5 +10,6 @@ class olxPage extends Page {
     }
     def goToLoginPage(){
         loginLink.click()
+
     }
 }

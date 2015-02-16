@@ -45,12 +45,13 @@ Feature: Log in and do not remember the User
     And Clicks on the Zaloguj sie button
     Then He check you are logged
 
-#Scenario5
+#Scenario5 - TBA33
   Scenario:Forgotten password
     Given User is on olx.pl page
     And He is clicks on the Moj OLX
     When He click on the Zapomniales hasła
     And He fill email "olx_test@op.pl" and nowe haslo "alama" and powtorz haslo "alama"
     And He click on the Zmien button
-    Then password is change
+    Then Password is change
+
 
