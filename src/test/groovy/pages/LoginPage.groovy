@@ -1,5 +1,7 @@
 package pages
 
+import geb.navigator.Navigator
+
 
 /**
  * Created by asobieska on 2/12/2015.
@@ -12,6 +14,7 @@ class LoginPage extends OlxAbstractPage{
         logOutButton { $("#topLoginLink") }
         errorMessageForEmail  { $("label.error[for='userEmail']") }
         errorMessageForPassword { $("label.error[for='userPass']") }
+        checkZapamietajMnie { $("label.f_checkbox[for='user-remember']") }
     }
 
     def logIn(String email, String password){
@@ -39,7 +42,7 @@ class LoginPage extends OlxAbstractPage{
         waitFor { errorMessageForPassword.text() == message }
     }
     def checkRememberMe(){
-        waitFor { $("label.f_checkbox[for='user-remember']").click() }
+        waitFor { checkZapamietajMnie.click() }
     }
 }
 

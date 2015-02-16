@@ -28,9 +28,9 @@ Feature: Log in and do not remember the User
     And He is not logged in
 
   Examples: Variations of invalid login data
-  | email                      | password              | message                                      |field               |
-  | wrongemail            | mnb098                | Niepoprawny format e-mail     |email              |
-  | olx_test@op.pl       | wrongpassword   | nieprawidłowy login lub hasło  |password       |
+  | email                | password        | message                       |field       |
+  | wrongemail           | mnb098          | Niepoprawny format e-mail     |email       |
+  | olx_test@op.pl       | wrongpassword   | nieprawidłowy login lub hasło |password    |
 
 #Scenario4
   Scenario: Log in and remember the User
