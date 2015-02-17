@@ -66,8 +66,7 @@ Feature: Log in and do not remember the User
     Then He is receive a message for field Powtorz haslo
 
 #Scenario7 - TBA53
-  @ignore
-  Scenario: Log in - with facebook
+  Scenario: Log in with facebook - wrong email and password provided
     Given User is on olx.pl page
     And He is clicks on the Moj OLX
     And He click on the facebook link
