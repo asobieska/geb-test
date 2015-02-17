@@ -1,4 +1,7 @@
 package pages
+
+import utils.Messeges
+
 /**
  * Created by asobieska on 2/12/2015.
  */
@@ -31,7 +34,7 @@ class LoginPage extends OlxAbstractPage{
     }
 
     def isErrorMessageForEmailVisible(){
-        waitFor { errorMessageForEmail.text() == "To pole jest wymagane" }
+        waitFor { errorMessageForEmail.text() == Messeges.FIELD_IS_REQUIRED }
     }
 
     def isErrorMessageForEmail(message){

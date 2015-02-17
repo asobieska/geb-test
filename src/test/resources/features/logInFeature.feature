@@ -74,20 +74,3 @@ Feature: Log in and do not remember the User
     And He fill facebook email "olx_test@op.pl" and facebook password "mnb098"
     And He click on the Log In
     Then He is receive a message Incorrect Email
-
-#F2 - TBA38 - Search
-#Scenario8
-    @ignore
-  Scenario: : First use for a search bar
-    Given User is on olx.pl page
-    When He write "moda" in a search bar
-    And He write "Gdynia" in a country
-    Then He clics on the Szukaj
-
-#Scenario9
-  @ignore
-  Scenario: : First use for a search bar
-    Given User is on olx.pl page
-    When He write only first letter "l" in a search bar
-    And He choose "lampa" in a list
-    Then He clics on the Szukaj
