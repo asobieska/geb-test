@@ -105,6 +105,22 @@ Then(~/^He is receive a message Incorrect Email$/) { ->
     assert loginPage.isErrorMessageForFacebookEmail()
 }
 
+//Scenario8
+When(~/^He write "(.*?)" in a search bar$/) { String searchValue ->
+    myPage.searchValueInMainPage(searchValue)
+}
+
+And(~/^He write "(.*?)" in a country$/) { String city ->
+    myPage.searchCityFieldInMainPage(city)
+}
+
+Then(~/^He clics on the Szukaj$/) { ->
+    myPage.searchButtonInMainPage()
+}
+
+
+
+
 
 
 
