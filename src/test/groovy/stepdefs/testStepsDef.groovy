@@ -93,6 +93,10 @@ When(~/^He check is on facebook page$/) { ->
     assert loginPage.isTitleContains("Log into Facebook")
 }
 
+And(~/^He fill facebook email "(.*?)" and facebook password "(.*?)"$/) { String facebookEmail, String facebookPassw ->
+    loginPage.logInFacebookPage(facebookEmail,facebookPassw)
+}
+
 And(~/^He click on the Log In$/) { ->
     loginPage.logInFacebookPageButton()
 }

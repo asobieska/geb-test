@@ -14,8 +14,10 @@ class LoginPage extends OlxAbstractPage{
         zapomnialesHasla { $("#newpassword") }
         forgottenPasswordLink (to: NewPasswordPage) { $("#newpassword") }
         facebookButton { $(".button span.icon")}
-        facebookPageButton { $("#loginbutton")}
-        errorMessageForFacebookLogIn { $("#login_form.login_error_box")}
+        facebookEmailField { $(".form_row input[name='email']") }
+        facebookPassField { $(".form_row input[name='pass']") }
+        facebookPageButton { $("#loginbutton") }
+        errorMessageForFacebookLogIn { $("#login_form .login_error_box .fwb") }
     }
 
 
@@ -54,6 +56,11 @@ class LoginPage extends OlxAbstractPage{
 
     def logInFacebookButton(){
         facebookButton.click()
+    }
+
+    def logInFacebookPage(String facebookEmail, String facebookPassword){
+        facebookEmailField.value(facebookEmail)
+        facebookPassField.value(facebookPassword)
     }
 
     def logInFacebookPageButton(){

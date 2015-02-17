@@ -7,6 +7,7 @@ Feature: Log in and do not remember the User
   Repeat password is incorrect
 
 #Scenario1
+
   Scenario: Log in and do not remember the User
     Given User is on olx.pl page
     And He is clicks on the Moj OLX
@@ -65,11 +66,12 @@ Feature: Log in and do not remember the User
     Then He is receive a message for field Powtorz haslo
 
 #Scenario7 - TBA53
+  @ignore
   Scenario: Log in - with facebook
     Given User is on olx.pl page
     And He is clicks on the Moj OLX
     And He click on the facebook link
     When He check is on facebook page
-    And He fill email "olx_test@op.pl" and password "mnb098"
+    And He fill facebook email "olx_test@op.pl" and facebook password "mnb098"
     And He click on the Log In
     Then He is receive a message Incorrect Email
