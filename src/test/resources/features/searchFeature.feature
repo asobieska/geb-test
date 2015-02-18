@@ -12,8 +12,7 @@ Feature: First use for a search bar
     And He clics on the Szukaj
     Then He check result Moda w Gdynia
 
-    #Scenario1a
-  @nowy
+#Scenario1a
   Scenario Outline: First use for a search bar
     Given User is on olx.pl page
     When He write what looking for "<value>" in a search bar
@@ -28,7 +27,7 @@ Feature: First use for a search bar
     |moda     |Gdynia |
     |lampa    |Sopot  |
 
-#Scenario2
+#Scenario2 - TBA43 not implement yet
   Scenario: Predictive search for a search bar
     Given User is on olx.pl page
     When He write only one letter "l" in a search bar
@@ -44,16 +43,31 @@ Feature: First use for a search bar
     When He change main categories and choose main categories Praca in the left site
     Then He see new subcategories from Praca
 
-#Scenario4 - TBA68
-
+#Scenario4 - TBA68 not implement yet
   Scenario: Categories selection
     Given User is on olx.pl page
     When He should see the main page category
-    |category   |subcategory            |
-    |Motoryzacja|Samochody osobowe      |
-    |Motoryzacja|Motocykle i Skutery    |
-    |Motoryzacja|Dostawcze i Ciężarowe  |
-    And He choose main category Motoryzacja
-    Then He see subcategories from Motoryzacja
+    |category           |
+    |Motoryzacja        |
+    |Nieruchomości      |
+    |Praca              |
+    And He choose main category
+    Then He see subcategories in main category
+    |subcategory        |
+    |Samochody osobowe  |
+    |Mieszkania         |
+    |Biurowa            |
+
+ #Scenario5 - TBA48
+  Scenario: Result view
+    Given User is on olx.pl page
+    And He write "moda" in a search bar
+    And He write "Gdynia" in a country
+    And He clics on the Szukaj
+    When He should by change typ of view
+    And He check result Moda w Gdynia
+    And He should by change navigate beetween result page
+    Then He check result navigate
+
 
 

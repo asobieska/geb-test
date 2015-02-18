@@ -24,6 +24,19 @@ Then(~/^He check result Moda w Gdynia$/) { ->
     myPage.isTitleContains("Moda w Gdynia")
 }
 
+//Scenario1a
+When(~/^He write what looking for "(.*?)" in a search bar$/) { String searchValue ->
+    myPage.searchValueInMainPage(searchValue)
+}
+
+And(~/^He write city "(.*?)" where you looking for$/) { String city ->
+    myPage.searchCityFieldInMainPage(city)
+}
+
+Then(~/^He check result:$/) { String messege ->
+    myPage.isTitleContains(messege)
+}
+
 //Scenario2 - jeszcze dobrze nie działa, trzeba poprawic krok He looking for "(.*?)" in a search list$/
 When(~/^He write only one letter "(.*?)" in a search bar$/) { String oneLetter ->
     myPage.predictiveSearchInMyPage(oneLetter)
@@ -58,15 +71,3 @@ Then(~/^He see new subcategories from Praca$/) { ->
 When(~/^He should see the main page category$/) { DataTable categoryAndSubcategory ->
 }
 
-//Scenario1a
-When(~/^He write what looking for "(.*?)" in a search bar$/) { String searchValue ->
-    myPage.searchValueInMainPage(searchValue)
-}
-
-And(~/^He write city "(.*?)" where you looking for$/) { String city ->
-    myPage.searchCityFieldInMainPage(city)
-}
-
-Then(~/^He check result:$/) { String messege ->
-    myPage.isTitleContains(messege)
-}
