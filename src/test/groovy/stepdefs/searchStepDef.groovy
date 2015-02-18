@@ -1,5 +1,7 @@
 package stepdefs
 
+import cucumber.api.DataTable
+
 import static cucumber.api.groovy.EN.*
 
 /**
@@ -50,4 +52,21 @@ When(~/^He change main categories and choose main categories Praca in the left s
 
 Then(~/^He see new subcategories from Praca$/) { ->
    assert myPage.newSubcategoryInPage()
+}
+
+//Scenario4
+When(~/^He should see the main page category$/) { DataTable categoryAndSubcategory ->
+}
+
+//Scenario1a
+When(~/^He write what looking for "(.*?)" in a search bar$/) { String searchValue ->
+    myPage.searchValueInMainPage(searchValue)
+}
+
+And(~/^He write city "(.*?)" where you looking for$/) { String city ->
+    myPage.searchCityFieldInMainPage(city)
+}
+
+Then(~/^He check result:$/) { String messege ->
+    myPage.isTitleContains(messege)
 }
