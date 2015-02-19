@@ -32,6 +32,7 @@ Feature: First use for a search bar
     |lampa    |Sopot  |
 
 #Scenario2 - TBA43 not implement yet
+  @nowy
   Scenario: Predictive search for a search bar
     Given User is on olx.pl page
     When He write only one letter "m" in a search bar
@@ -92,7 +93,6 @@ Feature: First use for a search bar
     Then He check result Moda w Gdynia
 
 #Scenario8 - TBA48
-  @nowy
   Scenario: Result view - change on sort Najdrozsze
     Given User is on olx.pl page
     And He write "moda" in a search bar

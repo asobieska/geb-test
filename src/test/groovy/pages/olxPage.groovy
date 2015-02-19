@@ -10,7 +10,7 @@ class olxPage extends OlxAbstractPage {
         searchCityField { $("#locationBox input[type='text']") }
         searchButton { $("#searchmain input[type='submit']")}
         predictiveSearch { $("#searchmain input[name='q']") }
-        findValueSearch { $("#autosuggest-div") }
+        findValueSearch { $("#autosuggest-div li").first() }
         mainCategory { $("#maincat-grid #cat-5") }
         subCategory { $("#bottom5 #cat-84") }
         newMainCategory { $("#leftMenu #cat-4") }
@@ -29,7 +29,6 @@ class olxPage extends OlxAbstractPage {
     def goToLoginPage(){
         loginLink.click()
         browser.page
-
     }
 
     def searchValueInMainPage(String lookingText){
@@ -38,6 +37,7 @@ class olxPage extends OlxAbstractPage {
 
     def searchCityFieldInMainPage(String lookingCity){
         searchCityField.value(lookingCity)
+        searchCityField.click()
     }
 
     def searchInMainPage(){
@@ -45,7 +45,8 @@ class olxPage extends OlxAbstractPage {
     }
 
     def predictiveSearchInMyPage(String oneLetter){
-        waitFor { predictiveSearch.value(oneLetter) }
+        waitFor { predictiveSearch << (oneLetter) }
+        predictiveSearch.click()
     }
 
     def findValueSearchInMyPage(){
