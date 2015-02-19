@@ -9,12 +9,18 @@ class olxPage extends OlxAbstractPage {
         searchValue { $("#searchmain input[name='q']") }
         searchCityField { $("#locationBox input[type='text']") }
         searchButton { $("#searchmain input[type='submit']")}
-//        predictiveSearch { $("#searchmain input[name='q']") }
-//        findValueSearch { $("#autosuggest-div").eq("(nth-child(6)") }
+        predictiveSearch { $("#searchmain input[name='q']") }
+        findValueSearch { $("#autosuggest-div") }
         mainCategory { $("#maincat-grid #cat-5") }
-        subCategory { $("#bottom5 #cat-84")}
-        newMainCategory { $("#leftMenu #cat-4")}
-        newSubcategory { $("#bottom4 #cat-52")}
+        subCategory { $("#bottom5 #cat-84") }
+        newMainCategory { $("#leftMenu #cat-4") }
+        newSubcategory { $("#bottom4 #cat-52") }
+        privatResultTab { $("#tabs-container li").first().next() }
+        firmaResultTab { $("#tabs-container li").last() }
+        wszystkieResultTab { $("#tabs-container li").first() }
+        galeryResultView { $("#viewSelector #gallery") }
+        galeryBigResultView { $("#viewSelector #galleryBig") }
+        listResultView { $("#viewSelector #list") }
     }
     def goToLoginPage(){
         loginLink.click()
@@ -31,15 +37,15 @@ class olxPage extends OlxAbstractPage {
     }
 
     def searchInMainPage(){
-        waitFor {searchButton.click()}
+        waitFor { searchButton.click() }
     }
 
     def predictiveSearchInMyPage(String oneLetter){
         waitFor { predictiveSearch.value(oneLetter) }
     }
 
-    def findValueSearchInMyPage(findValueInList){
-       waitFor { findValueSearch.click(findValueInList) }
+    def findValueSearchInMyPage(){
+       waitFor { findValueSearch.click() }
     }
 
     def categoryInMyPage(){
@@ -56,5 +62,29 @@ class olxPage extends OlxAbstractPage {
 
     def newSubcategoryInPage(){
        waitFor { newSubcategory.text().contains("Biurowa") }
+    }
+
+    def navigatePrivatResultView() {
+        waitFor(10,1) { privatResultTab.click() }
+    }
+
+    def navigateFirmaResultView() {
+        waitFor(10,1) { firmaResultTab.click() }
+    }
+
+    def navigateWszystkieResultView() {
+        waitFor(10,1) { wszystkieResultTab.click() }
+    }
+
+    def viewGaleriaResultView() {
+        waitFor(10,1) { galeryResultView.click() }
+    }
+
+    def viewDuzeZdjeciaResultView() {
+        waitFor(10,1) { galeryBigResultView.click() }
+    }
+
+    def viewListaResultView() {
+        waitFor(10,1) { listResultView.click() }
     }
 }

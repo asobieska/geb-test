@@ -3,6 +3,9 @@ Feature: First use for a search bar
   Predictive search for a search bar
   Change main categories if your position is subcategories
   Categories selection
+  Result view - change on view galeria, duze zdjecia and lista
+  Result view - change on navigate Prywatne, Firma and Wszystkie
+  Result view - change on sort Najtańsze, Najdrozsze and Najnowsze
 
 #Scenario1
   Scenario: First use for a search bar
@@ -30,8 +33,8 @@ Feature: First use for a search bar
 #Scenario2 - TBA43 not implement yet
   Scenario: Predictive search for a search bar
     Given User is on olx.pl page
-    When He write only one letter "l" in a search bar
-    And He looking for "lampa" in a search list
+    When He write only one letter "m" in a search bar
+    And He looking for Mercedes in a search list
     Then He clics on the Szukaj
     And He check result on predictive search
 
@@ -58,16 +61,37 @@ Feature: First use for a search bar
     |Mieszkania         |
     |Biurowa            |
 
- #Scenario5 - TBA48
-  Scenario: Result view
+#Scenario5 - TBA48
+  @nowy
+  Scenario: Result view - change on view galeria, duze zdjecia and lista
     Given User is on olx.pl page
     And He write "moda" in a search bar
     And He write "Gdynia" in a country
     And He clics on the Szukaj
-    When He should by change typ of view
-    And He check result Moda w Gdynia
-    And He should by change navigate beetween result page
-    Then He check result navigate
+    When He change view on galeria
+    And He change view on duze zdjecia
+    Then He change view on lista
+
+#Scenario6 - TBA48
+  Scenario: Result view - change on navigate Prywatne, Firma and Wszystkie
+    Given User is on olx.pl page
+    And He write "moda" in a search bar
+    And He write "Gdynia" in a country
+    And He clics on the Szukaj
+    When He change navigate on the Prywatne
+    And He change navigate on the Firma
+    Then He change navigate is on Wszystkie
+
+#Scenario7 - TBA48 not implement yet
+
+  Scenario: Result view - change on sort Najtańsze, Najdrozsze and Najnowsze
+    Given User is on olx.pl page
+    And He write "moda" in a search bar
+    And He write "Gdynia" in a country
+    And He clics on the Szukaj
+    When He change sort on the Najtańsze
+    And He change sort on the Najdroższe
+    Then He change sort on the Najnowsze
 
 
 

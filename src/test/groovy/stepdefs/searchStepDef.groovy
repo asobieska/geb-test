@@ -20,6 +20,7 @@ And(~/^He write "(.*?)" in a country$/) { String city ->
 And(~/^He clics on the Szukaj$/) { ->
     myPage.searchInMainPage()
 }
+
 Then(~/^He check result Moda w Gdynia$/) { ->
     myPage.isTitleContains("Moda w Gdynia")
 }
@@ -42,12 +43,12 @@ When(~/^He write only one letter "(.*?)" in a search bar$/) { String oneLetter -
     myPage.predictiveSearchInMyPage(oneLetter)
 }
 
-And(~/^He looking for "(.*?)" in a search list$/) { String findValueSearch ->
-    myPage.findValueSearchInMyPage(findValueSearch)
+And(~/^He looking for Mercedes in a search list$/) {  ->
+    myPage.findValueSearchInMyPage()
 }
 
 And(~/^He check result on predictive search$/) { ->
-    myPage.isTitleContains("Lampa")
+    myPage.isTitleContains("Mercedes")
 }
 
 //Scenario3
@@ -70,4 +71,43 @@ Then(~/^He see new subcategories from Praca$/) { ->
 //Scenario4
 When(~/^He should see the main page category$/) { DataTable categoryAndSubcategory ->
 }
+
+//Scenario5
+When (~/^He change view on galeria$/) { ->
+    myPage.viewGaleriaResultView()
+}
+
+And (~/^He change view on duze zdjecia$/) { ->
+    myPage.viewDuzeZdjeciaResultView()
+}
+
+Then (~/^He change view on lista$/) { ->
+    myPage.viewListaResultView()
+}
+
+//Scenario6
+When (~/^He change navigate on the Prywatne$/) { ->
+    myPage.navigatePrivatResultView()
+}
+
+And (~/^He change navigate on the Firma$/) { ->
+    myPage.navigateFirmaResultView()
+}
+
+Then (~/^He change navigate is on Wszystkie$/) { ->
+    myPage.navigateWszystkieResultView()
+}
+
+//Scenario7
+When (~/^He change sort on the Najtańsze$/) { ->
+
+}
+And (~/^He change sort on the Najdroższe$/) { ->
+
+}
+Then (~/^He change sort on the Najnowsze$/) { ->
+
+}
+
+
 
