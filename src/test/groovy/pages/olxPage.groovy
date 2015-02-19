@@ -21,6 +21,10 @@ class olxPage extends OlxAbstractPage {
         galeryResultView { $("#viewSelector #gallery") }
         galeryBigResultView { $("#viewSelector #galleryBig") }
         listResultView { $("#viewSelector #list") }
+        dispayedSortInResultView { $("#form-order-gallery [title='Najnowsze']").jquery.mouseover() }
+        sortCheapest { $("#form-order-gallery li").first().next() }
+        sortMostExpensive { $("#form-order-gallery li").last() }
+        sortLates { $("#form-order-gallery li").first() }
     }
     def goToLoginPage(){
         loginLink.click()
@@ -37,7 +41,7 @@ class olxPage extends OlxAbstractPage {
     }
 
     def searchInMainPage(){
-        waitFor { searchButton.click() }
+        waitFor(10,1) { searchButton.click() }
     }
 
     def predictiveSearchInMyPage(String oneLetter){
@@ -87,4 +91,18 @@ class olxPage extends OlxAbstractPage {
     def viewListaResultView() {
         waitFor(10,1) { listResultView.click() }
     }
+
+    def pomocnicza() {
+        dispayedSortInResultView.click()
+    }
+
+    def sortNajtanszeResultView() {
+        sortCheapest.click()
+    }
+
+    def sortMostExpensiveResultView() {
+        sortMostExpensive.click()
+    }
+
+
 }

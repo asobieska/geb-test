@@ -5,7 +5,8 @@ Feature: First use for a search bar
   Categories selection
   Result view - change on view galeria, duze zdjecia and lista
   Result view - change on navigate Prywatne, Firma and Wszystkie
-  Result view - change on sort Najtańsze, Najdrozsze and Najnowsze
+  Result view - change on sort Najtańsze
+  Result view - change on sort Najdroższe
 
 #Scenario1
   Scenario: First use for a search bar
@@ -62,7 +63,6 @@ Feature: First use for a search bar
     |Biurowa            |
 
 #Scenario5 - TBA48
-  @nowy
   Scenario: Result view - change on view galeria, duze zdjecia and lista
     Given User is on olx.pl page
     And He write "moda" in a search bar
@@ -82,16 +82,24 @@ Feature: First use for a search bar
     And He change navigate on the Firma
     Then He change navigate is on Wszystkie
 
-#Scenario7 - TBA48 not implement yet
-
-  Scenario: Result view - change on sort Najtańsze, Najdrozsze and Najnowsze
+#Scenario7 - TBA48
+  Scenario: Result view - change on sort Najtańsze
     Given User is on olx.pl page
     And He write "moda" in a search bar
     And He write "Gdynia" in a country
     And He clics on the Szukaj
     When He change sort on the Najtańsze
-    And He change sort on the Najdroższe
-    Then He change sort on the Najnowsze
+    Then He check result Moda w Gdynia
+
+#Scenario8 - TBA48
+  @nowy
+  Scenario: Result view - change on sort Najdrozsze
+    Given User is on olx.pl page
+    And He write "moda" in a search bar
+    And He write "Gdynia" in a country
+    And He clics on the Szukaj
+    When He change sort on the Najdroższe
+    Then He check result Moda w Gdynia
 
 
 

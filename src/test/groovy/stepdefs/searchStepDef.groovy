@@ -100,13 +100,14 @@ Then (~/^He change navigate is on Wszystkie$/) { ->
 
 //Scenario7
 When (~/^He change sort on the Najtańsze$/) { ->
-
+    myPage.pomocnicza()
+    myPage.sortNajtanszeResultView()
 }
-And (~/^He change sort on the Najdroższe$/) { ->
 
-}
-Then (~/^He change sort on the Najnowsze$/) { ->
-
+//Scenario8
+When (~/^He change sort on the Najdroższe/) { ->
+    myPage.pomocnicza()
+    myPage.sortMostExpensiveResultView()
 }
 
 
