@@ -7,7 +7,7 @@ import utils.Messeges
  */
 class LoginPage extends OlxAbstractPage{
     static content = {
-            emailField { $("#loginForm input[name='login[email]']") }
+        emailField { $("#loginForm input[name='login[email]']") }
         passwordField { $("#loginForm input[name='login[password]']") }
         loginButton { $("#se_userLogin") }
         logOutButton { $("#topLoginLink") }

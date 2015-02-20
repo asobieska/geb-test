@@ -18,7 +18,8 @@ And(~/^He write "(.*?)" in a country$/) { String city ->
 }
 
 And(~/^He clics on the Szukaj$/) { ->
-    myPage.searchInMainPage()
+//    myPage.searchInMainPage()
+    myPage.goToResultSearchPage()
 }
 
 Then(~/^He check result Moda w Gdynia$/) { ->
@@ -38,9 +39,15 @@ Then(~/^He check result:$/) { String messege ->
     myPage.isTitleContains(messege)
 }
 
-//Scenario2 - jeszcze dobrze nie działa, trzeba poprawic krok He looking for "(.*?)" in a search list$/
-When(~/^He write only one letter "(.*?)" in a search bar$/) { String oneLetter ->
-    myPage.predictiveSearchInMyPage(oneLetter)
+//Scenario2
+When(~/^He write only one letter "(.*?)" in a search bar$/) { String arg1 ->
+    keyword = arg1
+    String oneLetter = keyword.substring(0,1)
+    myPage.searchValueInMainPage(oneLetter)
+    Thread.sleep(5000)
+    myPage.predictiveSearchInMyPage()
+    myPage.searchValueInMainPage.value(keyword)
+    Thread.sleep(5000)
 }
 
 And(~/^He looking for Mercedes in a search list$/) {  ->
@@ -72,43 +79,7 @@ Then(~/^He see new subcategories from Praca$/) { ->
 When(~/^He should see the main page category$/) { DataTable categoryAndSubcategory ->
 }
 
-//Scenario5
-When (~/^He change view on galeria$/) { ->
-    myPage.viewGaleriaResultView()
-}
 
-And (~/^He change view on duze zdjecia$/) { ->
-    myPage.viewDuzeZdjeciaResultView()
-}
-
-Then (~/^He change view on lista$/) { ->
-    myPage.viewListaResultView()
-}
-
-//Scenario6
-When (~/^He change navigate on the Prywatne$/) { ->
-    myPage.navigatePrivatResultView()
-}
-
-And (~/^He change navigate on the Firma$/) { ->
-    myPage.navigateFirmaResultView()
-}
-
-Then (~/^He change navigate is on Wszystkie$/) { ->
-    myPage.navigateWszystkieResultView()
-}
-
-//Scenario7
-When (~/^He change sort on the Najtańsze$/) { ->
-    myPage.pomocnicza()
-    myPage.sortNajtanszeResultView()
-}
-
-//Scenario8
-When (~/^He change sort on the Najdroższe/) { ->
-    myPage.pomocnicza()
-    myPage.sortMostExpensiveResultView()
-}
 
 
 
