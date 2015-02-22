@@ -29,12 +29,14 @@ Feature: First use for a search bar
     |lampa    |Sopot  |
 
 #Scenario2 - TBA43 not implement yet
+  @nowy
   Scenario: Predictive search for a search bar
     Given User is on olx.pl page
     When He write only one letter "m" in a search bar
-    And He looking for Mercedes in a search list
-    Then He clics on the Szukaj
-    And He check result on predictive search
+    And The list of hints is opened
+    And  He choose "meble" on hints list
+    And He clicks on the Szukaj
+    Then He check of category
 
 #Scenario3 - TBA73
   Scenario: Change main categories if your position is subcategories
@@ -45,7 +47,6 @@ Feature: First use for a search bar
     Then He see new subcategories from Praca
 
 #Scenario4 - TBA68 not implement yet
-  @nowy
   Scenario: Categories selection
     Given User is on olx.pl page
     When He should see the main page category

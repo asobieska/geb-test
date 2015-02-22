@@ -10,16 +10,16 @@ import static cucumber.api.groovy.EN.*
 
 //Scenario1
 When(~/^He write "(.*?)" in a search bar$/) { String searchValue ->
-    myPage.searchValueInMainPage(searchValue)
+    myPage.setSearchValue(searchValue)
 }
 
 And(~/^He write "(.*?)" in a country$/) { String city ->
     myPage.searchCityFieldInMainPage(city)
 }
 
-And(~/^He clics on the Szukaj$/) { ->
+And(~/^He clicks on the Szukaj$/) { ->
 //    myPage.searchInMainPage()
-    myPage.goToResultSearchPage()
+//    myPage.goToResultSearchPage()
 }
 
 Then(~/^He check result Moda w Gdynia$/) { ->
@@ -28,7 +28,7 @@ Then(~/^He check result Moda w Gdynia$/) { ->
 
 //Scenario1a
 When(~/^He write what looking for "(.*?)" in a search bar$/) { String searchValue ->
-    myPage.searchValueInMainPage(searchValue)
+    myPage.setSearchValue(searchValue)
 }
 
 And(~/^He write city "(.*?)" where you looking for$/) { String city ->
@@ -40,22 +40,18 @@ Then(~/^He check result:$/) { String messege ->
 }
 
 //Scenario2
-When(~/^He write only one letter "(.*?)" in a search bar$/) { String arg1 ->
-    keyword = arg1
-    String oneLetter = keyword.substring(0,1)
-    myPage.searchValueInMainPage(oneLetter)
-    Thread.sleep(5000)
-    myPage.predictiveSearchInMyPage()
-    myPage.searchValueInMainPage.value(keyword)
-    Thread.sleep(5000)
+When(~/^He write only one letter "(.*?)" in a search bar$/) { String firstLetter ->
+    myPage.setSearchValue(firstLetter)
 }
 
-And(~/^He looking for Mercedes in a search list$/) {  ->
-    myPage.findValueSearchInMyPage()
+And (~/^The list of hints is opened$/) { ->
+    myPage.isHintsListDisplayed()
 }
-
-And(~/^He check result on predictive search$/) { ->
-    myPage.isTitleContains("Mercedes")
+And  (~/^He choose "(.*?)" on hints list$/) { String hint ->
+    myPage.chooseValueOnHintsList(hint)
+}
+Then(~/^He check of category$/) { ->
+    assert myPage.resultCategory()
 }
 
 //Scenario3

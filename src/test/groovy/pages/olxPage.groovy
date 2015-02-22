@@ -23,8 +23,8 @@ class olxPage extends OlxAbstractPage {
         browser.page
     }
 
-    def searchValueInMainPage(String lookingText){
-        searchValue.value(lookingText)
+    def setSearchValue(String lookingText){
+        searchValue << lookingText
     }
 
     def searchCityFieldInMainPage(String lookingCity){
@@ -32,22 +32,21 @@ class olxPage extends OlxAbstractPage {
         searchCityField.click()
     }
 
-//    def searchInMainPage(){
-//        waitFor { searchButton.click() }
-//    }
-
     def goToResultSearchPage(){
         waitFor { searchButton.click() }
         browser.page
     }
 
-    def predictiveSearchInMyPage(){
+    def isHintsListDisplayed(){
         waitFor { hintsList.isDisplayed() }
-
     }
 
-    def findValueSearchInMyPage(){
-       waitFor { findValueSearch.click() }
+    def chooseValueOnHintsList(String hint) {
+       $("span", text: contains(hint.substring(1))).click()
+    }
+
+    def resultCategory(){
+        waitFor { $("small.breadcrumb", text: contains("Dom i Ogród")) }
     }
 
     def categoryInMyPage(){
