@@ -13,13 +13,12 @@ When(~/^He write "(.*?)" in a search bar$/) { String searchValue ->
     myPage.setSearchValue(searchValue)
 }
 
-And(~/^He write "(.*?)" in a country$/) { String city ->
-    myPage.searchCityFieldInMainPage(city)
+And(~/^He write "(.*?)" in a city$/) { String city ->
+    myPage.setSearchCity(city)
 }
 
 And(~/^He clicks on the Szukaj$/) { ->
-//    myPage.searchInMainPage()
-    myPage.goToResultSearchPage()
+    myPage.searchInOlxPage()
 }
 
 Then(~/^He check result Moda w Gdynia$/) { ->
@@ -32,7 +31,7 @@ When(~/^He write what looking for "(.*?)" in a search bar$/) { String searchValu
 }
 
 And(~/^He write city "(.*?)" where you looking for$/) { String city ->
-    myPage.searchCityFieldInMainPage(city)
+    myPage.setSearchCity(city)
 }
 
 Then(~/^He check result:$/) { String messege ->
@@ -70,8 +69,72 @@ When(~/^He change main categories and choose main categories "(.*?)" in the left
 }
 
 //Scenario4
-When(~/^He should see the main page category$/) { DataTable categoryAndSubcategory ->
+
+//Scenario5
+When (~/^He change view on galeria$/) { ->
+    myPage.viewGaleriaResultView()
 }
+
+And (~/^He change view on duze zdjecia$/) { ->
+    myPage.viewDuzeZdjeciaResultView()
+}
+
+Then (~/^He change view on lista$/) { ->
+    myPage.viewListaResultView()
+}
+
+//Scenario6
+When (~/^He change navigate on the Prywatne$/) { ->
+    myPage.navigatePrivatResultView()
+}
+
+And (~/^He change navigate on the Firma$/) { ->
+    myPage.navigateFirmaResultView()
+}
+
+Then (~/^He change navigate is on Wszystkie$/) { ->
+    myPage.navigateWszystkieResultView()
+}
+
+//Scenario7
+When (~/^He change sort on the Najtańsze$/) { ->
+    myPage.displayedSortInResultView()
+    myPage.sortNajtanszeResultView()
+}
+
+//Scenario8
+When (~/^He change sort on the Najdroższe/) { ->
+    myPage.displayedSortInResultView()
+    myPage.sortMostExpensiveResultView()
+}
+
+//Scenario9
+And(~/^He choose subcategory "(.*?)"$/) { String subcategory ->
+    myPage.chooseSubcategory(subcategory)
+}
+
+And(~/^He write to "(.*?)" to search bar$/) { String value->
+    myPage.setValueInSearchBar(value)
+}
+
+When(~/^He choose offer Tylko ze zdjeciem$/) { ->
+    myPage.checkPhotoOnly()
+}
+
+And(~/^He choose category Wynajem$/) { ->
+    myPage.chooseListCategory()
+}
+
+//And(~/^He choose liczba pokoi: kawalerka$/) { ->
+//    // Write code here that turns the phrase above into concrete actions
+//    throw new PendingException()
+//}
+//
+//Then(~/^He clicks on the search$/) { ->
+//    // Write code here that turns the phrase above into concrete actions
+//    throw new PendingException()
+//}
+
 
 
 
