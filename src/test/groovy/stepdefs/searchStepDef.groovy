@@ -57,20 +57,16 @@ Then(~/^He check phrase meble is on a result page$/) { ->
 }
 
 //Scenario3
-And(~/^He choose main category Motoryzacja$/) {  ->
-    myPage.categoryInMyPage()
+And(~/^He choose main category "(.*?)"$/) { String mainCategory ->
+    myPage.chooseCategoryInOlxPage(mainCategory)
 }
 
-And(~/^He see subcategories from Motoryzacja$/) { ->
-    assert myPage.subCategoryInMyPage()
+And(~/^He see subcategories "(.*?)"$/) { String subcategory ->
+    assert myPage.checkSubcategoryInMainCategory(subcategory)
 }
 
-When(~/^He change main categories and choose main categories Praca in the left site$/) {  ->
-    myPage.newCategoryInMyPage()
-}
-
-Then(~/^He see new subcategories from Praca$/) { ->
-   assert myPage.newSubcategoryInPage()
+When(~/^He change main categories and choose main categories "(.*?)" in the left site$/) {  String newCategory->
+    myPage.chooseCategoryInCategoryPage(newCategory)
 }
 
 //Scenario4

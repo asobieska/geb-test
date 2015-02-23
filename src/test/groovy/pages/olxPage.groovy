@@ -11,10 +11,6 @@ class olxPage extends OlxAbstractPage {
         searchButton { $("#searchmain input[type='submit']")}
         hintsList { $('ul.suggestsearchmain') }
         findValueSearch { $("#autosuggest-div li").first() }
-        mainCategory { $("#maincat-grid #cat-5") }
-        subCategory { $("#bottom5 #cat-84") }
-        newMainCategory { $("#leftMenu #cat-4") }
-        newSubcategory { $("#bottom4 #cat-52") }
 
     }
     def goToLoginPage(){
@@ -44,20 +40,16 @@ class olxPage extends OlxAbstractPage {
        $("span", text: contains(hint.substring(1))).click()
     }
 
-
-    def categoryInMyPage(){
-       waitFor { mainCategory.click() }
+    def chooseCategoryInOlxPage(category){
+       waitFor { $("strong", text: contains(category)).click() }
     }
 
-    def subCategoryInMyPage(){
-        waitFor { subCategory.text().contains("Samochody") }
+    def checkSubcategoryInMainCategory(subcategory){
+        waitFor { $("span", text: contains(subcategory)) }
     }
 
-    def newCategoryInMyPage(){
-         waitFor { newMainCategory.click() }
+    def chooseCategoryInCategoryPage(categoryLeftSite){
+         waitFor { $("#leftMenu a", text: contains(categoryLeftSite)).click() }
     }
 
-    def newSubcategoryInPage(){
-       waitFor { newSubcategory.text().contains("Biurowa") }
-    }
 }

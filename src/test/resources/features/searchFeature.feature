@@ -29,7 +29,6 @@ Feature: First use for a search bar
     |lampa    |Sopot  |
 
 #Scenario2 - TBA43
-  @nowy
   Scenario: Predictive search for a search bar
     Given User is on olx.pl page
     When He write only one letter "m" in a search bar
@@ -41,10 +40,10 @@ Feature: First use for a search bar
 #Scenario3 - TBA73
   Scenario: Change main categories if your position is subcategories
     Given User is on olx.pl page
-    And He choose main category Motoryzacja
-    And He see subcategories from Motoryzacja
-    When He change main categories and choose main categories Praca in the left site
-    Then He see new subcategories from Praca
+    And He choose main category "Motoryzacja"
+    And He see subcategories "Samochody osobowe"
+    When He change main categories and choose main categories "Praca" in the left site
+    Then He see subcategories "Biurowa"
 
 #Scenario4 - TBA68 not implement yet
   Scenario: Categories selection
