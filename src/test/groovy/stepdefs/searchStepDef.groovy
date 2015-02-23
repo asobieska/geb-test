@@ -19,7 +19,7 @@ And(~/^He write "(.*?)" in a country$/) { String city ->
 
 And(~/^He clicks on the Szukaj$/) { ->
 //    myPage.searchInMainPage()
-//    myPage.goToResultSearchPage()
+    myPage.goToResultSearchPage()
 }
 
 Then(~/^He check result Moda w Gdynia$/) { ->
@@ -47,11 +47,13 @@ When(~/^He write only one letter "(.*?)" in a search bar$/) { String firstLetter
 And (~/^The list of hints is opened$/) { ->
     myPage.isHintsListDisplayed()
 }
+
 And  (~/^He choose "(.*?)" on hints list$/) { String hint ->
     myPage.chooseValueOnHintsList(hint)
 }
-Then(~/^He check of category$/) { ->
-    assert myPage.resultCategory()
+
+Then(~/^He check phrase meble is on a result page$/) { ->
+    assert myPage.isTitleContains("Meble - OLX.pl")
 }
 
 //Scenario3

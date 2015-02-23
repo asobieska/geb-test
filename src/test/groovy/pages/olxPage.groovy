@@ -10,7 +10,6 @@ class olxPage extends OlxAbstractPage {
         searchCityField { $("#locationBox input[type='text']") }
         searchButton { $("#searchmain input[type='submit']")}
         hintsList { $('ul.suggestsearchmain') }
-        categoryHint { $("ul.suggestsearchmain span.gray")}
         findValueSearch { $("#autosuggest-div li").first() }
         mainCategory { $("#maincat-grid #cat-5") }
         subCategory { $("#bottom5 #cat-84") }
@@ -45,9 +44,6 @@ class olxPage extends OlxAbstractPage {
        $("span", text: contains(hint.substring(1))).click()
     }
 
-    def resultCategory(){
-        waitFor { $("small.breadcrumb", text: contains("Dom i Ogród")) }
-    }
 
     def categoryInMyPage(){
        waitFor { mainCategory.click() }

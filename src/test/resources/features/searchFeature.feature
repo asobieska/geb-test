@@ -10,7 +10,7 @@ Feature: First use for a search bar
     Given User is on olx.pl page
     When He write "moda" in a search bar
     And He write "Gdynia" in a country
-    And He clics on the Szukaj
+    And He clicks on the Szukaj
     Then He check result Moda w Gdynia
 
 #Scenario1a
@@ -18,7 +18,7 @@ Feature: First use for a search bar
     Given User is on olx.pl page
     When He write what looking for "<value>" in a search bar
     And He write city "<city>" where you looking for
-    And He clics on the Szukaj
+    And He clicks on the Szukaj
     Then He check result:
   """
   <value> w <city>
@@ -28,7 +28,7 @@ Feature: First use for a search bar
     |moda     |Gdynia |
     |lampa    |Sopot  |
 
-#Scenario2 - TBA43 not implement yet
+#Scenario2 - TBA43
   @nowy
   Scenario: Predictive search for a search bar
     Given User is on olx.pl page
@@ -36,7 +36,7 @@ Feature: First use for a search bar
     And The list of hints is opened
     And  He choose "meble" on hints list
     And He clicks on the Szukaj
-    Then He check of category
+    Then He check phrase meble is on a result page
 
 #Scenario3 - TBA73
   Scenario: Change main categories if your position is subcategories
