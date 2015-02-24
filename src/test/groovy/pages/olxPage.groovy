@@ -26,7 +26,7 @@ class olxPage extends OlxAbstractPage {
         searchValueInResultPage { $(".clearbox  input[name='q']") }
 //        checkboxPhotoOnly { $("label.small[for='photo-only']")}
         checkboxPhotoOnly { $("#photo-only")}
-        listCategory { $("#subSelect1307 span.3rd-category-choose-label", text: contains('Wybierz kategorię')).jquery.mouseover() }
+        listCategory { $("span.3rd-category-choose-label", text: contains('Wybierz kategorię')).jquery.mouseover() }
 
     }
 
@@ -106,15 +106,12 @@ class olxPage extends OlxAbstractPage {
         sortMostExpensive.click()
     }
 
-    def chooseSubcategory(subcategory) {
-         $("ul span.category-name", text: contains(subcategory)).click()
+    def chooseLinkCategory(category){
+        $("#topLink ul span", text: contains(category)).click()
     }
 
-    def setValueInSearchBar(value){
-        waitFor { searchValueInResultPage.value(value) }
-//        $("#search-submit").click()
-        Thread.sleep(500)
-        $("#search-text") << Keys.chord(Keys.CONTROL, "enter")
+    def chooseLinkSubcategory(subcategory){
+        $("#topLink ul span", text: contains(subcategory)).click()
     }
 
     def checkPhotoOnly() {

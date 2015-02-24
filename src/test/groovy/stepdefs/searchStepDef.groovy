@@ -109,12 +109,12 @@ When (~/^He change sort on the Najdroższe/) { ->
 }
 
 //Scenario9
-And(~/^He choose subcategory "(.*?)"$/) { String subcategory ->
-    myPage.chooseSubcategory(subcategory)
+And(~/^He choose category "(.*?)" in a result page$/) { String linkCategory ->
+    myPage.chooseLinkCategory(linkCategory)
 }
 
-And(~/^He write to "(.*?)" to search bar$/) { String value->
-    myPage.setValueInSearchBar(value)
+And(~/^He choose subcategory "(.*?)" in a result page$/) { String linkSubcategory->
+    myPage.chooseLinkSubcategory(linkSubcategory)
 }
 
 When(~/^He choose offer Tylko ze zdjeciem$/) { ->
