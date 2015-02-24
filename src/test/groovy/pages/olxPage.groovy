@@ -1,6 +1,5 @@
 package pages
 
-import geb.navigator.Navigator
 import org.openqa.selenium.Keys
 
 
@@ -24,10 +23,12 @@ class olxPage extends OlxAbstractPage {
         sortCheapest { $("#form-order-gallery li").first().next() }
         sortMostExpensive { $("#form-order-gallery li").last() }
         searchValueInResultPage { $(".clearbox  input[name='q']") }
-//        checkboxPhotoOnly { $("label.small[for='photo-only']")}
         checkboxPhotoOnly { $("#photo-only")}
-        listCategory { $("span.3rd-category-choose-label", text: contains('Wybierz kategorię')).jquery.mouseover() }
-
+        listCategory { $(".category-item .category").jquery.mouseover() }
+        listLiczbaPokoi { $("#param_rooms").jquery.mouseover() }
+        listChooseCategory { $("ul.subcategories a.category-choose", text: contains("Wynajem")) }
+//        listCountRoom { $(".suggestinput .select-only-this-opiton span", text: contains("2 pokoje")) }
+        listCountRoom { $("span", text: contains("2 pokoje")) }
     }
 
     def goToLoginPage(){
@@ -108,6 +109,7 @@ class olxPage extends OlxAbstractPage {
 
     def chooseLinkCategory(category){
         $("#topLink ul span", text: contains(category)).click()
+
     }
 
     def chooseLinkSubcategory(subcategory){
@@ -118,9 +120,21 @@ class olxPage extends OlxAbstractPage {
        waitFor { checkboxPhotoOnly.click() }
     }
 
-    def chooseListCategory(){
-        listCategory.click()
-        waitFor { $("ul li a.category-choose", text: contains("Wynajem")) }
+    def chooseListCategory() {
+        waitFor { listCategory.click() }
+        Thread.sleep(500)
+        waitFor { listChooseCategory.isDisplayed()
+            listChooseCategory.click() }
+    }
 
+    def chooseListLiczbaPokoi() {
+        waitFor { listLiczbaPokoi.click() }
+        Thread.sleep(500)
+        listCountRoom.isDisplayed()
+        listCountRoom.click()
+    }
+
+    def searchInResultPage() {
+        $("ul.search-submit").click()
     }
 }

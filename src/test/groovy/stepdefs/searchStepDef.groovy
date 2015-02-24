@@ -125,15 +125,13 @@ And(~/^He choose category Wynajem$/) { ->
     myPage.chooseListCategory()
 }
 
-//And(~/^He choose liczba pokoi: kawalerka$/) { ->
-//    // Write code here that turns the phrase above into concrete actions
-//    throw new PendingException()
-//}
-//
-//Then(~/^He clicks on the search$/) { ->
-//    // Write code here that turns the phrase above into concrete actions
-//    throw new PendingException()
-//}
+And(~/^He choose liczba pokoi: kawalerka/) { ->
+    myPage.chooseListLiczbaPokoi()
+}
+
+Then(~/^He clicks on the search$/) { ->
+    myPage.searchInResultPage()
+}
 
 
 
