@@ -1,6 +1,5 @@
 package pages
 
-import geb.navigator.Navigator
 import org.openqa.selenium.Keys
 
 
@@ -24,10 +23,12 @@ class olxPage extends OlxAbstractPage {
         sortCheapest { $("#form-order-gallery li").first().next() }
         sortMostExpensive { $("#form-order-gallery li").last() }
         searchValueInResultPage { $(".clearbox  input[name='q']") }
-//        checkboxPhotoOnly { $("label.small[for='photo-only']")}
         checkboxPhotoOnly { $("#photo-only")}
-        listCategory { $("#subSelect1307 span.3rd-category-choose-label", text: contains('Wybierz kategorię')).jquery.mouseover() }
-
+        listCategory { $(".category-item .category").jquery.mouseover() }
+        listLiczbaPokoi { $("#param_rooms").jquery.mouseover() }
+        listChooseCategory { $("ul.subcategories a.category-choose", text: contains("Wynajem")) }
+//        listCountRoom { $(".suggestinput .select-only-this-opiton span", text: contains("2 pokoje")) }
+        listCountRoom { $("span", text: contains("2 pokoje")) }
     }
 
     def goToLoginPage(){
@@ -106,24 +107,34 @@ class olxPage extends OlxAbstractPage {
         sortMostExpensive.click()
     }
 
-    def chooseSubcategory(subcategory) {
-         $("ul span.category-name", text: contains(subcategory)).click()
+    def chooseLinkCategory(category){
+        $("#topLink ul span", text: contains(category)).click()
+
     }
 
-    def setValueInSearchBar(value){
-        waitFor { searchValueInResultPage.value(value) }
-//        $("#search-submit").click()
-        Thread.sleep(500)
-        $("#search-text") << Keys.chord(Keys.CONTROL, "enter")
+    def chooseLinkSubcategory(subcategory){
+        $("#topLink ul span", text: contains(subcategory)).click()
     }
 
     def checkPhotoOnly() {
        waitFor { checkboxPhotoOnly.click() }
     }
 
-    def chooseListCategory(){
-        listCategory.click()
-        waitFor { $("ul li a.category-choose", text: contains("Wynajem")) }
+    def chooseListCategory() {
+        waitFor { listCategory.click() }
+        Thread.sleep(500)
+        waitFor { listChooseCategory.isDisplayed()
+            listChooseCategory.click() }
+    }
 
+    def chooseListLiczbaPokoi() {
+        waitFor { listLiczbaPokoi.click() }
+        Thread.sleep(500)
+        listCountRoom.isDisplayed()
+        listCountRoom.click()
+    }
+
+    def searchInResultPage() {
+        $("ul.search-submit").click()
     }
 }

@@ -45,21 +45,6 @@ Feature: First use for a search bar
     When He change main categories and choose main categories "Praca" in the left site
     Then He see subcategories "Biurowa"
 
-#Scenario4 - TBA68 not implement yet
-  Scenario: Categories selection
-    Given User is on olx.pl page
-    When He should see the main page category
-    |category           |
-    |Motoryzacja        |
-    |Nieruchomości      |
-    |Praca              |
-    And He choose main category
-    Then He see subcategories in main category
-    |subcategory        |
-    |Samochody osobowe  |
-    |Mieszkania         |
-    |Biurowa            |
-
 #Scenario5 - TBA48 working
   Scenario: Result view - change on view galeria, duze zdjecia and lista
     Given User is on olx.pl page
@@ -98,26 +83,21 @@ Feature: First use for a search bar
     When He change sort on the Najdroższe
     Then He check result Moda w Gdynia
 
-#Scenario9 - TBA63 not implement yet
+#Scenario9 - TBA63 implement now
   @testing
   Scenario: Detailed search
     Given User is on olx.pl page
-    And He choose main category "Nieruchomości"
-    And He choose subcategory "Mieszkania"
-    And He write to "pink" to search bar
+    And He write "pokoj" in a search bar
+    And He write "Gdynia" in a city
+    And He clicks on the Szukaj
+    And He choose category "Nieruchomości" in a result page
+    And He choose subcategory "Mieszkania" in a result page
     When He choose offer Tylko ze zdjeciem
     And He choose category Wynajem
     And He choose liczba pokoi: kawalerka
     Then He clicks on the search
 
-#Scenario10 - TBA58 not implement yet
-  Scenario: Detailed search - results counter
-    Given User is on olx.pl page
-    And He write "alabaster" in a search bar
-    And He clicks on the Szukaj
-    And He choose a category to Dom i Ogrod
-    When He check counter result to navigate tabs wszystkie and list of category Dom i Ogrod
-    Then He check empty result from category Praca
+
 
 
 

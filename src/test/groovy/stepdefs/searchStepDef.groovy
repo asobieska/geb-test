@@ -109,12 +109,12 @@ When (~/^He change sort on the Najdroższe/) { ->
 }
 
 //Scenario9
-And(~/^He choose subcategory "(.*?)"$/) { String subcategory ->
-    myPage.chooseSubcategory(subcategory)
+And(~/^He choose category "(.*?)" in a result page$/) { String linkCategory ->
+    myPage.chooseLinkCategory(linkCategory)
 }
 
-And(~/^He write to "(.*?)" to search bar$/) { String value->
-    myPage.setValueInSearchBar(value)
+And(~/^He choose subcategory "(.*?)" in a result page$/) { String linkSubcategory->
+    myPage.chooseLinkSubcategory(linkSubcategory)
 }
 
 When(~/^He choose offer Tylko ze zdjeciem$/) { ->
@@ -125,15 +125,13 @@ And(~/^He choose category Wynajem$/) { ->
     myPage.chooseListCategory()
 }
 
-//And(~/^He choose liczba pokoi: kawalerka$/) { ->
-//    // Write code here that turns the phrase above into concrete actions
-//    throw new PendingException()
-//}
-//
-//Then(~/^He clicks on the search$/) { ->
-//    // Write code here that turns the phrase above into concrete actions
-//    throw new PendingException()
-//}
+And(~/^He choose liczba pokoi: kawalerka/) { ->
+    myPage.chooseListLiczbaPokoi()
+}
+
+Then(~/^He clicks on the search$/) { ->
+    myPage.searchInResultPage()
+}
 
 
 
