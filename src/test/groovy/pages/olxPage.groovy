@@ -28,7 +28,7 @@ class olxPage extends OlxAbstractPage {
         listLiczbaPokoi { $("#param_rooms").jquery.mouseover() }
         listChooseCategory { $("ul.subcategories a.category-choose", text: contains("Wynajem")) }
 //        listCountRoom { $(".suggestinput .select-only-this-opiton span", text: contains("2 pokoje")) }
-        listCountRoom { $("span", text: contains("2 pokoje")) }
+        listCountRoom { $("#f-two_rooms") }
     }
 
     def goToLoginPage(){
@@ -130,7 +130,7 @@ class olxPage extends OlxAbstractPage {
     def chooseListLiczbaPokoi() {
         waitFor { listLiczbaPokoi.click() }
         Thread.sleep(500)
-        listCountRoom.isDisplayed()
+        waitFor(5, 1) { listCountRoom.isDisplayed() }
         listCountRoom.click()
     }
 
