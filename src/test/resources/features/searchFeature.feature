@@ -83,8 +83,7 @@ Feature: First use for a search bar
     When He change sort on the Najdroższe
     Then He check result Moda w Gdynia
 
-#Scenario9 - TBA63 implement now
-  @testing
+#Scenario9 - TBA63
   Scenario: Detailed search
     Given User is on olx.pl page
     And He write "pokoj" in a search bar
@@ -96,6 +95,18 @@ Feature: First use for a search bar
     And He choose category Wynajem
     And He choose liczba pokoi: kawalerka
     Then He clicks on the search
+
+#Scenario10 - TBA58 not implement yet
+  @testing
+  Scenario: Detailed search - results counter
+    Given User is on olx.pl page
+    And He write "alabaster" in a search bar
+    And He write "Warszawa" in a city
+    And He clicks on the Szukaj
+    And He choose category "Dom i Ogrod" in a result page
+    When He check counter result to navigate tabs wszystkie
+    And He check counter of list category Dom i Ogrod
+    Then He check empty result from category Praca
 
 
 

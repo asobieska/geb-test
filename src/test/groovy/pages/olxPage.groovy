@@ -25,10 +25,17 @@ class olxPage extends OlxAbstractPage {
         searchValueInResultPage { $(".clearbox  input[name='q']") }
         checkboxPhotoOnly { $("#photo-only")}
         listCategory { $(".category-item .category").jquery.mouseover() }
-        listLiczbaPokoi { $("#param_rooms").jquery.mouseover() }
         listChooseCategory { $("ul.subcategories a.category-choose", text: contains("Wynajem")) }
-//        listCountRoom { $(".suggestinput .select-only-this-opiton span", text: contains("2 pokoje")) }
+        listLiczbaPokoi { $("#param_rooms").jquery.mouseover() }
         listCountRoom { $("#f-two_rooms") }
+
+        chooseMainCategory { $("#main-category-choose-label").jquery.mouseover() }
+        listMainCategory { $("#categorySelectList .categorySelectA1")}
+        section1 { wszystkieResultTab }
+        section2 { chooseMainCategory.listMainCategory() }
+        itemCount1 { section1.find("span.color-2") }
+        itemCount2 { section2.find("span.counterCategory") }
+
     }
 
     def goToLoginPage(){
@@ -109,7 +116,6 @@ class olxPage extends OlxAbstractPage {
 
     def chooseLinkCategory(category){
         $("#topLink ul span", text: contains(category)).click()
-
     }
 
     def chooseLinkSubcategory(subcategory){
@@ -129,7 +135,6 @@ class olxPage extends OlxAbstractPage {
 
     def chooseListLiczbaPokoi() {
         waitFor { listLiczbaPokoi.click() }
-        Thread.sleep(500)
         waitFor(5, 1) { listCountRoom.isDisplayed() }
         listCountRoom.click()
     }
@@ -137,4 +142,11 @@ class olxPage extends OlxAbstractPage {
     def searchInResultPage() {
         $("ul.search-submit").click()
     }
+
+    def listCategoryInResultPage(){
+        waitFor { chooseMainCategory.click() }
+        waitFor { listMainCategory.isDisplayed() }
+    }
+
+
 }

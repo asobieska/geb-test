@@ -133,6 +133,12 @@ Then(~/^He clicks on the search$/) { ->
     myPage.searchInResultPage()
 }
 
+//Scenario10
+When(~/^He check counter result to navigate tabs wszystkie$/) { ->
+    myPage.listCategoryInResultPage()
+    assert myPage.itemCount1 == myPage.itemCount2
+}
+
 
 
 
