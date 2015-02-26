@@ -70,6 +70,7 @@ When(~/^He change main categories and choose main categories "(.*?)" in the left
 
 //Scenario4
 
+
 //Scenario5
 When (~/^He change view on galeria$/) { ->
     myPage.viewGaleriaResultView()
@@ -134,10 +135,7 @@ Then(~/^He clicks on the search$/) { ->
 }
 
 //Scenario10
-When(~/^He check counter result to navigate tabs wszystkie$/) { ->
-    myPage.listCategoryInResultPage()
-    assert myPage.itemCount1 == myPage.itemCount2
-}
+
 
 
 

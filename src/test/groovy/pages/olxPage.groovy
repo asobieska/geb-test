@@ -29,12 +29,6 @@ class olxPage extends OlxAbstractPage {
         listLiczbaPokoi { $("#param_rooms").jquery.mouseover() }
         listCountRoom { $("#f-two_rooms") }
 
-        chooseMainCategory { $("#main-category-choose-label").jquery.mouseover() }
-        listMainCategory { $("#categorySelectList .categorySelectA1")}
-        section1 { wszystkieResultTab }
-        section2 { chooseMainCategory.listMainCategory() }
-        itemCount1 { section1.find("span.color-2") }
-        itemCount2 { section2.find("span.counterCategory") }
 
     }
 
@@ -142,11 +136,5 @@ class olxPage extends OlxAbstractPage {
     def searchInResultPage() {
         $("ul.search-submit").click()
     }
-
-    def listCategoryInResultPage(){
-        waitFor { chooseMainCategory.click() }
-        waitFor { listMainCategory.isDisplayed() }
-    }
-
 
 }

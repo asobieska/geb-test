@@ -5,7 +5,7 @@ Feature: First use for a search bar
   Categories selection
 
 
-#Scenario1 working
+#Scenario1
   Scenario: First use for a search bar
     Given User is on olx.pl page
     When He write "moda" in a search bar
@@ -28,7 +28,7 @@ Feature: First use for a search bar
     |moda     |Gdynia |
     |lampa    |Sopot  |
 
-#Scenario2 - TBA43 working
+#Scenario2 - TBA43
   Scenario: Predictive search for a search bar
     Given User is on olx.pl page
     When He write only one letter "m" in a search bar
@@ -37,7 +37,7 @@ Feature: First use for a search bar
     And He clicks on the Szukaj
     Then He check phrase meble is on a result page
 
-#Scenario3 - TBA73 working
+#Scenario3 - TBA73
   Scenario: Change main categories if your position is subcategories
     Given User is on olx.pl page
     And He choose main category "Motoryzacja"
@@ -45,7 +45,27 @@ Feature: First use for a search bar
     When He change main categories and choose main categories "Praca" in the left site
     Then He see subcategories "Biurowa"
 
-#Scenario5 - TBA48 working
+#Scenario4 -
+  @testing
+  Scenario Outline: Categories selection
+    Given User is on olx.pl page
+    When He choose main category "<category>"
+    Then He see subcategories "<subcategory>"
+
+    Examples:
+    |category       |subcategory        |
+    |Motoryzacja    |Samochody osobowe  |
+    |Nieruchomości  |Mieszkania         |
+    |Praca          |Biurowa            |
+    |Dom i Ogród    |Meble              |
+    |Elektronika    |Telefony komórkowe |
+    |Moda           |Ubrania            |
+    |Rolnictwo      |Ciągniki           |
+    |Zwierzęta      |Psy                |
+    |Dla Dzieci     |Zabawki            |
+    |Sport i Hobby  |Kolekcje           |
+
+#Scenario5 - TBA48
   Scenario: Result view - change on view galeria, duze zdjecia and lista
     Given User is on olx.pl page
     And He write "moda" in a search bar
@@ -55,7 +75,7 @@ Feature: First use for a search bar
     And He change view on duze zdjecia
     Then He change view on lista
 
-#Scenario6 - TBA48 working
+#Scenario6 - TBA48
   Scenario: Result view - change on navigate Prywatne, Firma and Wszystkie
     Given User is on olx.pl page
     And He write "moda" in a search bar
@@ -65,7 +85,7 @@ Feature: First use for a search bar
     And He change navigate on the Firma
     Then He change navigate is on Wszystkie
 
-#Scenario7 - TBA48 working
+#Scenario7 - TBA48
   Scenario: Result view - change on sort Najtańsze
     Given User is on olx.pl page
     And He write "moda" in a search bar
@@ -97,7 +117,6 @@ Feature: First use for a search bar
     Then He clicks on the search
 
 #Scenario10 - TBA58 not implement yet
-  @testing
   Scenario: Detailed search - results counter
     Given User is on olx.pl page
     And He write "alabaster" in a search bar
