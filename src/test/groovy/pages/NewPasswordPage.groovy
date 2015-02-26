@@ -1,4 +1,5 @@
 package pages
+import utils.Messeges
 
 /**
  * Created by asobieska on 2/16/2015.
@@ -13,6 +14,8 @@ class NewPasswordPage extends OlxAbstractPage{
 
     }
 
+
+
     def changePassword(email, newPassword, repeatPassword) {
         emailFieldNewPasswordPage.value(email)
         newPasswordField.value(newPassword)
@@ -24,10 +27,10 @@ class NewPasswordPage extends OlxAbstractPage{
     }
 
     def isActivateMessageForNewPassword(){
-        waitFor { $("#body-container strong").text() == "Teraz musisz aktywować swoje nowe hasło!"}
+        waitFor { $("#body-container strong").text() == Messeges.ACTIVATE_ACCOUNT }
     }
 
     def isErrorMessageForRepeatPasswordIncorrect(){
-        errorMessageForRepeatPassword().text() == "Podane hasła nie są identyczne"
+        errorMessageForRepeatPassword().text() == Messeges.VALIDATA_PASSWORD_AND_REPEAT_PASSWORD
     }
 }

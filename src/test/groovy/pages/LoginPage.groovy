@@ -24,6 +24,7 @@ class LoginPage extends OlxAbstractPage{
     }
 
 
+
     def logIn(String email, String password){
         emailField.value(email)
         passwordField.value(password)
@@ -71,7 +72,7 @@ class LoginPage extends OlxAbstractPage{
     }
 
     def isErrorMessageForFacebookEmail(){
-        waitFor { errorMessageForFacebookLogIn.text() == "Incorrect Email" }
+        waitFor { errorMessageForFacebookLogIn.text() == Messeges.WRONG_EMAIL }
     }
 }
 

@@ -28,8 +28,6 @@ class olxPage extends OlxAbstractPage {
         listChooseCategory { $("ul.subcategories a.category-choose", text: contains("Wynajem")) }
         listLiczbaPokoi { $("#param_rooms").jquery.mouseover() }
         listCountRoom { $("#f-two_rooms") }
-
-
     }
 
     def goToLoginPage(){

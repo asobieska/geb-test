@@ -1,7 +1,5 @@
 package stepdefs
 
-import cucumber.api.DataTable
-
 import static cucumber.api.groovy.EN.*
 
 /**
@@ -67,9 +65,6 @@ And(~/^He see subcategories "(.*?)"$/) { String subcategory ->
 When(~/^He change main categories and choose main categories "(.*?)" in the left site$/) {  String newCategory->
     myPage.chooseCategoryInCategoryPage(newCategory)
 }
-
-//Scenario4
-
 
 //Scenario5
 When (~/^He change view on galeria$/) { ->
