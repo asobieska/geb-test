@@ -46,7 +46,6 @@ Feature: First use for a search bar
     Then He see subcategories "Biurowa"
 
 #Scenario4 -
-  @testing
   Scenario Outline: Categories selection
     Given User is on olx.pl page
     When He choose main category "<category>"
@@ -117,12 +116,13 @@ Feature: First use for a search bar
     Then He clicks on the search
 
 #Scenario10 - TBA58 not implement yet
+  @testing
   Scenario: Detailed search - results counter
     Given User is on olx.pl page
     And He write "alabaster" in a search bar
     And He write "Warszawa" in a city
     And He clicks on the Szukaj
-    And He choose category "Dom i Ogrod" in a result page
+    And He choose category "Dom i Ogród" in a result page
     When He check counter result to navigate tabs wszystkie
     And He check counter of list category Dom i Ogrod
     Then He check empty result from category Praca
