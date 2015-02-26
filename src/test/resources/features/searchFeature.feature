@@ -121,11 +121,10 @@ Feature: First use for a search bar
     Given User is on olx.pl page
     And He write "alabaster" in a search bar
     And He write "Warszawa" in a city
-    And He clicks on the Szukaj
+    When He clicks on the Szukaj
     And He choose category "Dom i Ogród" in a result page
-    When He check counter result to navigate tabs wszystkie
-    And He check counter of list category Dom i Ogrod
-    Then He check empty result from category Praca
+    Then He compares counter from tab wszystkie and counter for category "Dom i Ogród"
+
 
 
 

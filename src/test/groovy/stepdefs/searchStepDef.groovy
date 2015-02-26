@@ -75,7 +75,7 @@ And (~/^He change view on duze zdjecia$/) { ->
     myPage.viewDuzeZdjeciaResultView()
 }
 
-Then (~/^He change view on lista$/) { ->
+Then (~/^He change view on getCategoryCounter$/) { ->
     myPage.viewListaResultView()
 }
 
@@ -121,7 +121,7 @@ And(~/^He choose category Wynajem$/) { ->
     myPage.chooseListCategory()
 }
 
-And(~/^He choose liczba pokoi: kawalerka/) { ->
+And(~/^He choose liczba pokoi: kawalerka$/) { ->
     myPage.chooseListLiczbaPokoi()
 }
 
@@ -130,6 +130,10 @@ Then(~/^He clicks on the search$/) { ->
 }
 
 //Scenario10
+Then(~/^He compares counter from tab wszystkie and counter for category "(.*?)"$/) { String categoryName ->
+    assert myPage.getResultsCounter() == myPage.getCategoryCounter(categoryName)
+}
+
 
 
 

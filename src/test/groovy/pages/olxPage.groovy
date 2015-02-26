@@ -1,5 +1,6 @@
 package pages
 
+import geb.navigator.Navigator
 import org.openqa.selenium.Keys
 
 
@@ -134,5 +135,34 @@ class olxPage extends OlxAbstractPage {
     def searchInResultPage() {
         $("ul.search-submit").click()
     }
+    def getCategoryCounter(String categoryName){
+        waitFor { $(".combospace #choosecat").jquery.mouseover().click() }
+        def categoryListItem = $("li", text: contains(categoryName))
+        def categoryCounter = categoryListItem.find("span.counterCategory").text()
+        categoryCounter
+    }
 
+    def printElement(Navigator navigator, String indents){
+        println(indents + "tag: " + navigator.tag()
+                + ", classes:" + navigator.classes().toArray())
+        println(indents + "elements:")
+        navigator.allElements().each { elem ->
+            println(indents + "  " + elem.tagName)
+            }
+    }
+
+    def printElementWithChildren(Navigator navigator){
+        println(navigator.tag() + "[")
+        navigator.children().each { elem ->
+            printElement(elem, "    ")
+        }
+        println("](" + navigator.tag()+ ")")
+    }
+
+    def getResultsCounter(){
+        printElementWithChildren(wszystkieResultTab)
+        def counter = wszystkieResultTab.find("span span.color-2")
+        def resultsCounter = counter.text()
+        resultsCounter
+    }
 }
