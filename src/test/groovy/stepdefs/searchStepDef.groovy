@@ -75,7 +75,7 @@ And (~/^He change view on duze zdjecia$/) { ->
     myPage.viewDuzeZdjeciaResultView()
 }
 
-Then (~/^He change view on getCategoryCounter$/) { ->
+Then (~/^He change view on lista$/) { ->
     myPage.viewListaResultView()
 }
 

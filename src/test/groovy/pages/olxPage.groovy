@@ -1,35 +1,39 @@
 package pages
 
-import geb.navigator.Navigator
 import org.openqa.selenium.Keys
-
 
 class olxPage extends OlxAbstractPage {
     static url = '/'
     static at = { waitFor { title.contains('OLX') } }
     static content = {
-        loginLink(to: LoginPage) {  $('#topLoginLink') }
+        loginLink(to: LoginPage) { $('#topLoginLink') }
         searchValue { $("#searchmain input[name='q']") }
         searchCityField { $("#locationBox input[type='text']").jquery.mouseover() }
         searchButton { $("#searchmain input[type='submit']")}
         hintsList { $('ul.suggestsearchmain') }
         findValueSearch { $("#autosuggest-div li").first() }
-        privatResultTab { $("#tabs-container li").first().next() }
-        firmaResultTab { $("#tabs-container li").last() }
-        wszystkieResultTab { $("#tabs-container li").first() }
-        galeryResultView { $("#viewSelector #gallery") }
-        galeryBigResultView { $("#viewSelector #galleryBig") }
-        sortList { $("#form-order-gallery", text: contains("Najnowsze")).jquery.mouseover() }
-        listResultView { $("#viewSelector #list") }
-        sortCheapest { $("#form-order-gallery li").first().next() }
-        sortMostExpensive { $("#form-order-gallery li").last() }
+        tabsContainer { $("#tabs-container")}
+        privatResultTab { tabsContainer.find("li").first().next() }
+        firmaResultTab { tabsContainer.find("li").last() }
+        wszystkieResultTab { tabsContainer.find("li").first() }
+        viewSelector { $("#viewSelector") }
+        galeryResultView { viewSelector.find("#gallery") }
+        galeryBigResultView { viewSelector.find("#galleryBig") }
+        formOrderGallery { $("#form-order-gallery") }
+        sortList { formOrderGallery.find( text: contains("Najnowsze")).jquery.mouseover() }
+        listResultView { viewSelector.find("#list") }
+        sortCheapest { formOrderGallery.find("li").first().next() }
+        sortMostExpensive { formOrderGallery.find("li").last() }
         searchValueInResultPage { $(".clearbox  input[name='q']") }
+        linkCategoryNavigator { $("#topLink div.inner li span") }
         checkboxPhotoOnly { $("#photo-only")}
         listCategory { $(".category-item .category").jquery.mouseover() }
         listChooseCategory { $("ul.subcategories a.category-choose", text: contains("Wynajem")) }
         listLiczbaPokoi { $("#param_rooms").jquery.mouseover() }
         listCountRoom { $("#f-two_rooms") }
+        categoryCounter { $(".combospace #choosecat").jquery.mouseover() }
     }
+    private
 
     def goToLoginPage(){
         loginLink.click()
@@ -60,7 +64,7 @@ class olxPage extends OlxAbstractPage {
     }
 
     def chooseCategoryInOlxPage(category){
-       $("strong", text: contains(category)).click()
+        $("strong", text: contains(category)).click()
     }
 
     def checkSubcategoryInMainCategory(subcategory){
@@ -72,27 +76,27 @@ class olxPage extends OlxAbstractPage {
     }
 
     def navigatePrivatResultView() {
-        waitFor(10,1) { privatResultTab.click() }
+        waitFor { privatResultTab.click() }
     }
 
     def navigateFirmaResultView() {
-        waitFor(10,1) { firmaResultTab.click() }
+        waitFor { firmaResultTab.click() }
     }
 
     def navigateWszystkieResultView() {
-        waitFor(10,1) { wszystkieResultTab.click() }
+        waitFor { wszystkieResultTab.click() }
     }
 
     def viewGaleriaResultView() {
-        waitFor(10,1) { galeryResultView.click() }
+        waitFor { galeryResultView.click() }
     }
 
     def viewDuzeZdjeciaResultView() {
-        waitFor(10,1) { galeryBigResultView.click() }
+        waitFor { galeryBigResultView.click() }
     }
 
     def viewListaResultView() {
-        waitFor(10,1) { listResultView.click() }
+        waitFor { listResultView.click() }
     }
 
     def displayedSortInResultView() {
@@ -108,11 +112,11 @@ class olxPage extends OlxAbstractPage {
     }
 
     def chooseLinkCategory(category){
-        $("#topLink ul span", text: contains(category)).click()
+        linkCategoryNavigator.find( text: contains(category)).click()
     }
 
     def chooseLinkSubcategory(subcategory){
-        $("#topLink ul span", text: contains(subcategory)).click()
+        linkCategoryNavigator.find( text: contains(subcategory)).click()
     }
 
     def checkPhotoOnly() {
@@ -136,31 +140,13 @@ class olxPage extends OlxAbstractPage {
         $("ul.search-submit").click()
     }
     def getCategoryCounter(String categoryName){
-        waitFor { $(".combospace #choosecat").jquery.mouseover().click() }
+        waitFor { categoryCounter.click() }
         def categoryListItem = $("li", text: contains(categoryName))
         def categoryCounter = categoryListItem.find("span.counterCategory").text()
         categoryCounter
     }
 
-    def printElement(Navigator navigator, String indents){
-        println(indents + "tag: " + navigator.tag()
-                + ", classes:" + navigator.classes().toArray())
-        println(indents + "elements:")
-        navigator.allElements().each { elem ->
-            println(indents + "  " + elem.tagName)
-            }
-    }
-
-    def printElementWithChildren(Navigator navigator){
-        println(navigator.tag() + "[")
-        navigator.children().each { elem ->
-            printElement(elem, "    ")
-        }
-        println("](" + navigator.tag()+ ")")
-    }
-
     def getResultsCounter(){
-        printElementWithChildren(wszystkieResultTab)
         def counter = wszystkieResultTab.find("span span.color-2")
         def resultsCounter = counter.text()
         resultsCounter

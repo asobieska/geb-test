@@ -5,9 +5,9 @@ Feature: Log in and do not remember the User
   Log in and remember the User
   Forgotten password
   Repeat password is incorrect
+  Log in with facebook - wrong email and password provided
 
 #Scenario1
-
   Scenario: Log in and do not remember the User
     Given User is on olx.pl page
     And He is clicks on the Moj OLX
