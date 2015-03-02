@@ -1,6 +1,7 @@
 package pages
 
 import org.openqa.selenium.Keys
+import utils.PrinterConsole
 
 class olxPage extends OlxAbstractPage {
     static url = '/'
@@ -12,20 +13,17 @@ class olxPage extends OlxAbstractPage {
         searchButton { $("#searchmain input[type='submit']")}
         hintsList { $('ul.suggestsearchmain') }
         findValueSearch { $("#autosuggest-div li").first() }
-        tabsContainer { $("#tabs-container")}
-        privatResultTab { tabsContainer.find("li").first().next() }
-        firmaResultTab { tabsContainer.find("li").last() }
-        wszystkieResultTab { tabsContainer.find("li").first() }
+        tabsContainer { $("#tabs-container ")}
         viewSelector { $("#viewSelector") }
         galeryResultView { viewSelector.find("#gallery") }
         galeryBigResultView { viewSelector.find("#galleryBig") }
-        formOrderGallery { $("#form-order-gallery") }
+        formOrderGallery { $("#targetorder-select-gallery") }
         sortList { formOrderGallery.find( text: contains("Najnowsze")).jquery.mouseover() }
         listResultView { viewSelector.find("#list") }
-        sortCheapest { formOrderGallery.find("li").first().next() }
-        sortMostExpensive { formOrderGallery.find("li").last() }
+        sortCheapest { formOrderGallery.find(text: contains("Najtańsze")) }
+        sortMostExpensive { formOrderGallery.find(text: contains("Najdroższe")) }
         searchValueInResultPage { $(".clearbox  input[name='q']") }
-        linkCategoryNavigator { $("#topLink div.inner li span") }
+        linkCategoryNavigator { $("div.inner li span") }
         checkboxPhotoOnly { $("#photo-only")}
         listCategory { $(".category-item .category").jquery.mouseover() }
         listChooseCategory { $("ul.subcategories a.category-choose", text: contains("Wynajem")) }
@@ -33,7 +31,6 @@ class olxPage extends OlxAbstractPage {
         listCountRoom { $("#f-two_rooms") }
         categoryCounter { $(".combospace #choosecat").jquery.mouseover() }
     }
-    private
 
     def goToLoginPage(){
         loginLink.click()
@@ -75,19 +72,20 @@ class olxPage extends OlxAbstractPage {
          $("#leftMenu a", text: contains(categoryLeftSite)).click()
     }
 
-    def navigatePrivatResultView() {
-        waitFor { privatResultTab.click() }
+    def navigatePrivatResultView(tabPrywatne) {
+        waitFor { tabsContainer.find("li span", text: contains(tabPrywatne)).click() }
     }
 
-    def navigateFirmaResultView() {
-        waitFor { firmaResultTab.click() }
+    def navigateFirmaResultView(tabFirma) {
+        waitFor { tabsContainer.find("li span", text: contains(tabFirma)).click() }
     }
 
-    def navigateWszystkieResultView() {
-        waitFor { wszystkieResultTab.click() }
+    def navigateWszystkieResultView(tabWszystkie) {
+       waitFor { tabsContainer.find("li span.fbold", text: contains(tabWszystkie)).click() }
     }
 
     def viewGaleriaResultView() {
+        PrinterConsole.printElementHead(formOrderGallery)
         waitFor { galeryResultView.click() }
     }
 
@@ -104,6 +102,7 @@ class olxPage extends OlxAbstractPage {
     }
 
     def sortNajtanszeResultView() {
+        PrinterConsole.printElementHead(sortCheapest)
         sortCheapest.click()
     }
 

@@ -6,15 +6,13 @@ import utils.Messeges
  */
 class NewPasswordPage extends OlxAbstractPage{
     static content = {
-        emailFieldNewPasswordPage { $("#mainForm input[name='register[email]']")}
-        newPasswordField { $("#mainForm input[name='register[password]']")}
-        repeatPasswordField { $("#mainForm input[name='register[password2]']")}
+        mainForm { $("#mainForm") }
+        emailFieldNewPasswordPage { mainForm.find("input[name='register[email]']")}
+        newPasswordField { mainForm.find("input[name='register[password]']")}
+        repeatPasswordField { mainForm.find("input[name='register[password2]']")}
         changeButton { $("#se_userSignIn")}
         errorMessageForRepeatPassword { $("label.error[for='userPass-repeat']")}
-
     }
-
-
 
     def changePassword(email, newPassword, repeatPassword) {
         emailFieldNewPasswordPage.value(email)

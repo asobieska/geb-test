@@ -81,14 +81,15 @@ Feature: First use for a search bar
     Then He change view on lista
 
 #Scenario6 - TBA48
+  @testing
   Scenario: Result view - change on navigate Prywatne, Firma and Wszystkie
     Given User is on olx.pl page
     And He write "moda" in a search bar
     And He write "Gdynia" in a city
     And He clicks on the Szukaj
-    When He change navigate on the Prywatne
-    And He change navigate on the Firma
-    Then He change navigate is on Wszystkie
+    When He change navigate on the "Prywatne"
+    And He change navigate on "Firma"
+    Then He change navigate is on "Wszystkie"
 
 #Scenario7 - TBA48
   Scenario: Result view - change on sort Najtańsze

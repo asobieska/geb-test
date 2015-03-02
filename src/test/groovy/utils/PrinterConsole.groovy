@@ -23,4 +23,8 @@ class PrinterConsole {
         }
         println("](" + navigator.tag()+ ")")
     }
+
+    public static printElementHead(Navigator navigator){
+        println(navigator.firstElement().text)
+    }
 }

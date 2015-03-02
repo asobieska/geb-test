@@ -80,16 +80,16 @@ Then (~/^He change view on lista$/) { ->
 }
 
 //Scenario6
-When (~/^He change navigate on the Prywatne$/) { ->
-    myPage.navigatePrivatResultView()
+When (~/^He change navigate on the "(.*?)"/) { String tabPrywatne ->
+    myPage.navigatePrivatResultView(tabPrywatne)
 }
 
-And (~/^He change navigate on the Firma$/) { ->
-    myPage.navigateFirmaResultView()
+And (~/^He change navigate on "(.*?)"$/) { String tabFirma ->
+    myPage.navigateFirmaResultView(tabFirma)
 }
 
-Then (~/^He change navigate is on Wszystkie$/) { ->
-    myPage.navigateWszystkieResultView()
+Then (~/^He change navigate is on "(.*?)"$/) { String tabWszystkie ->
+    myPage.navigateWszystkieResultView(tabWszystkie)
 }
 
 //Scenario7
