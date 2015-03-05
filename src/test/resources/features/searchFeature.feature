@@ -10,6 +10,31 @@ Feature: First use for a search bar
   Detailed search
   Results counter
 
+  #Scenario5,6, 7, 8 TBA 48
+  Background:
+    Given User is on olx.pl page
+    And He write "moda" in a search bar
+    And He write "Gdynia" in a city
+    And He clicks on the Szukaj
+
+  Scenario: change on view galeria, duze zdjecia and lista
+    When He change view on galeria
+    And He change view on duze zdjecia
+    Then He change view on lista
+  @testing
+  Scenario: change on navigate Prywatne, Firma and Wszystkie
+    When He change navigate on the "Prywatne"
+    And He change navigate on "Firma"
+    Then He change navigate is on "Wszystkie"
+
+  Scenario: change on sort Najtańsze
+    When He change sort on the Najtańsze
+    Then He check result Moda w Gdynia
+
+  Scenario: change on sort Najdrozsze
+    When He change sort on the Najdroższe
+    Then He check result Moda w Gdynia
+
 
 #Scenario1
   Scenario: First use for a search bar
@@ -70,47 +95,9 @@ Feature: First use for a search bar
     |Dla Dzieci     |Zabawki            |
     |Sport i Hobby  |Kolekcje           |
 
-#Scenario5 - TBA48
-  Scenario: Result view - change on view galeria, duze zdjecia and lista
-    Given User is on olx.pl page
-    And He write "moda" in a search bar
-    And He write "Gdynia" in a city
-    And He clicks on the Szukaj
-    When He change view on galeria
-    And He change view on duze zdjecia
-    Then He change view on lista
-
-#Scenario6 - TBA48
-  @testing
-  Scenario: Result view - change on navigate Prywatne, Firma and Wszystkie
-    Given User is on olx.pl page
-    And He write "moda" in a search bar
-    And He write "Gdynia" in a city
-    And He clicks on the Szukaj
-    When He change navigate on the "Prywatne"
-    And He change navigate on "Firma"
-    Then He change navigate is on "Wszystkie"
-
-#Scenario7 - TBA48
-  Scenario: Result view - change on sort Najtańsze
-    Given User is on olx.pl page
-    And He write "moda" in a search bar
-    And He write "Gdynia" in a city
-    And He clicks on the Szukaj
-    When He change sort on the Najtańsze
-    Then He check result Moda w Gdynia
-
-#Scenario8 - TBA48
-  Scenario: Result view - change on sort Najdrozsze
-    Given User is on olx.pl page
-    And He write "moda" in a search bar
-    And He write "Gdynia" in a city
-    And He clicks on the Szukaj
-    When He change sort on the Najdroższe
-    Then He check result Moda w Gdynia
 
 #Scenario9 - TBA63
-  Scenario: Detailed search
+  Scenario: Detailed search, he cheek other options in a result page
     Given User is on olx.pl page
     And He write "pokoj" in a search bar
     And He write "Gdynia" in a city
@@ -123,6 +110,7 @@ Feature: First use for a search bar
     Then He clicks on the search
 
 #Scenario10 - TBA58
+  @testing
   Scenario: Results counter
     Given User is on olx.pl page
     And He write "alabaster" in a search bar

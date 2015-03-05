@@ -1,7 +1,6 @@
 package pages
 
 import org.openqa.selenium.Keys
-import utils.PrinterConsole
 
 class olxPage extends OlxAbstractPage {
     static url = '/'
@@ -14,22 +13,20 @@ class olxPage extends OlxAbstractPage {
         hintsList { $('ul.suggestsearchmain') }
         findValueSearch { $("#autosuggest-div li").first() }
         tabsContainer { $("#tabs-container ")}
+        wszystkieResultTab { tabsContainer.find("li").first() }
         viewSelector { $("#viewSelector") }
         galeryResultView { viewSelector.find("#gallery") }
         galeryBigResultView { viewSelector.find("#galleryBig") }
         formOrderGallery { $("#targetorder-select-gallery") }
-        sortList { formOrderGallery.find( text: contains("Najnowsze")).jquery.mouseover() }
         listResultView { viewSelector.find("#list") }
         sortCheapest { formOrderGallery.find(text: contains("Najtańsze")) }
         sortMostExpensive { formOrderGallery.find(text: contains("Najdroższe")) }
         searchValueInResultPage { $(".clearbox  input[name='q']") }
         linkCategoryNavigator { $("div.inner li span") }
         checkboxPhotoOnly { $("#photo-only")}
-        listCategory { $(".category-item .category").jquery.mouseover() }
         listChooseCategory { $("ul.subcategories a.category-choose", text: contains("Wynajem")) }
-        listLiczbaPokoi { $("#param_rooms").jquery.mouseover() }
         listCountRoom { $("#f-two_rooms") }
-        categoryCounter { $(".combospace #choosecat").jquery.mouseover() }
+//        categoryCounter { $(".combospace #choosecat").jquery.mouseover() }
     }
 
     def goToLoginPage(){
@@ -42,7 +39,6 @@ class olxPage extends OlxAbstractPage {
     }
 
     def setSearchCity(String lookingCity){
-
         searchCityField.value(lookingCity)
         Thread.sleep(500)
         searchCityField << Keys.chord(Keys.CONTROL, "enter")
@@ -85,7 +81,6 @@ class olxPage extends OlxAbstractPage {
     }
 
     def viewGaleriaResultView() {
-        PrinterConsole.printElementHead(formOrderGallery)
         waitFor { galeryResultView.click() }
     }
 
@@ -98,11 +93,11 @@ class olxPage extends OlxAbstractPage {
     }
 
     def displayedSortInResultView() {
+        def sortList = formOrderGallery.find(text: contains("Najnowsze")).jquery.mouseover()
         sortList.click()
     }
 
     def sortNajtanszeResultView() {
-        PrinterConsole.printElementHead(sortCheapest)
         sortCheapest.click()
     }
 
@@ -123,6 +118,7 @@ class olxPage extends OlxAbstractPage {
     }
 
     def chooseListCategory() {
+        def listCategory = $(".category-item .category").jquery.mouseover()
         waitFor { listCategory.click() }
         Thread.sleep(500)
         waitFor { listChooseCategory.isDisplayed()
@@ -130,6 +126,7 @@ class olxPage extends OlxAbstractPage {
     }
 
     def chooseListLiczbaPokoi() {
+        def listLiczbaPokoi = $("#param_rooms").jquery.mouseover()
         waitFor { listLiczbaPokoi.click() }
         waitFor(5, 1) { listCountRoom.isDisplayed() }
         listCountRoom.click()
@@ -139,7 +136,8 @@ class olxPage extends OlxAbstractPage {
         $("ul.search-submit").click()
     }
     def getCategoryCounter(String categoryName){
-        waitFor { categoryCounter.click() }
+        def listCategoryCounter = $(".combospace #choosecat").jquery.mouseover()
+        waitFor { listCategoryCounter.click() }
         def categoryListItem = $("li", text: contains(categoryName))
         def categoryCounter = categoryListItem.find("span.counterCategory").text()
         categoryCounter
